@@ -3,48 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f4c430">
-  <meta name="description" content="AA Sport DZ — multi-discipline gym in Annaba, Algeria. Boxing, MMA, judo, lutte, jujutsu, self-defense, fitness, kids programs and VIP sessions.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="AA Sport DZ — boxing, MMA, judo, lutte, self-defense, fitness, kids programs and VIP training in Annaba, Algeria.">
   <meta property="og:title" content="AA Sport DZ — Annaba">
-  <meta property="og:description" content="Train stronger. Fight smarter. AA Sport DZ in Annaba, Algeria.">
+  <meta property="og:description" content="Train without limits at AA Sport DZ in Annaba.">
+  <meta property="og:image" content="assets/hero.png">
   <link rel="icon" href="assets/favicon.jpg">
   <title>AA Sport DZ — Annaba</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Requested refinements layered on top of the original design */
-    body{
-      background:
-        radial-gradient(circle at 82% 12%, rgba(245,200,66,.10), transparent 30%),
-        radial-gradient(circle at 8% 44%, rgba(153,105,18,.08), transparent 32%),
-        linear-gradient(180deg,#0a0a0a 0%,#0d0d0d 46%,#090909 100%);
-    }
-    .grain-overlay{display:none}
-    .ambient{opacity:.075;filter:blur(135px)}
-    .brand-logo{width:46px;height:46px;object-fit:contain;border-radius:50%;flex:0 0 46px}
-    .footer-brand .brand-logo{width:38px;height:38px;flex-basis:38px}
-    .hero-photo{min-height:620px;background:#121212}
-    .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%;display:block}
-    .hero-photo::before{z-index:2;background:linear-gradient(to top,rgba(0,0,0,.48),transparent 58%),linear-gradient(120deg,rgba(245,200,66,.06),transparent 40%)}
-    .hero-stamp{z-index:4;width:138px;height:88px;border-radius:18px;right:-18px;top:58px;transform:rotate(4deg);padding:10px;text-align:center}
-    .hero-stamp span{font-size:.62rem}
-    .hero-stamp b{font-size:2rem;line-height:.9;margin-top:3px}
-    .coach-roster{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .coach-feature,.coach-more{min-height:220px;padding:26px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(150deg,rgba(255,255,255,.04),rgba(255,255,255,.015));display:flex;flex-direction:column;justify-content:space-between;gap:22px}
-    .coach-avatar{width:54px;height:54px;border-radius:14px;display:grid;place-items:center;background:var(--gold);color:#111;font-family:var(--display);font-size:1.55rem;box-shadow:0 10px 35px rgba(245,200,66,.13)}
-    .coach-feature span{font-size:.6rem;font-weight:900;color:var(--gold);letter-spacing:.15em}
-    .coach-feature h3,.coach-more h3{font-family:var(--display);font-size:2rem;font-weight:400;line-height:1.05;margin:6px 0}
-    .coach-feature p,.coach-more p{font-size:.8rem;color:var(--text-soft);line-height:1.6}
-    .coach-more>span{font-family:var(--display);font-size:3.4rem;color:var(--gold);line-height:1}
-    @media(max-width:980px){.coach-roster{grid-template-columns:1fr}.hero-photo{min-height:580px}.hero-stamp{right:12px}}
-    @media(max-width:720px){.brand-logo{width:40px;height:40px;flex-basis:40px}.hero-photo{min-height:500px}.hero-stamp{width:116px;height:76px;top:26px;right:-4px}.hero-stamp b{font-size:1.7rem}}
-    @media(max-width:480px){.hero-photo{min-height:430px}.hero-photo img{object-position:center center}}
-  </style>
 </head>
 <body>
-  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
   <div class="ambient ambient-a" aria-hidden="true"></div>
   <div class="ambient ambient-b" aria-hidden="true"></div>
 
@@ -57,7 +30,7 @@
 
       <div class="nav-links" id="navLinks">
         <a href="#schedule" data-i18n="navSchedule">Schedule</a>
-        <a href="#coaches" data-i18n="navCoaches">Coaches</a>
+        <a href="#coaches" data-i18n="navTeam">Team</a>
         <a href="#location" data-i18n="navLocation">Location</a>
       </div>
 
@@ -76,28 +49,34 @@
   <main>
     <section class="hero shell">
       <div class="hero-copy reveal">
+        <div class="hero-label"><span></span><span data-i18n="heroLabel">AA SPORT · ANNABA</span></div>
         <h1><span data-i18n="heroLine1">TRAIN</span><br><span class="gold" data-i18n="heroLine2">WITHOUT LIMITS.</span></h1>
         <p data-i18n="heroDesc">Boxing, MMA, judo, wrestling, self-defense, kids programs and fitness — all under one roof in the heart of Annaba.</p>
         <div class="hero-actions">
-          <a href="#schedule" class="btn btn-primary"><span data-i18n="viewSchedule">View schedule</span><span aria-hidden="true">↘</span></a>
-          <a href="#location" class="btn btn-ghost"><span data-i18n="findUs">Find us</span><span aria-hidden="true">⌖</span></a>
+          <a href="#schedule" class="btn btn-primary magnetic"><span data-i18n="viewSchedule">View schedule</span><span aria-hidden="true">↘</span></a>
+          <a href="#location" class="btn btn-ghost magnetic"><span data-i18n="findUs">Find us</span><span aria-hidden="true">⌖</span></a>
         </div>
         <div class="hero-meta">
-          <div><strong>20+</strong><span data-i18n="sessionsWeek">weekly session types</span></div>
-          <div><strong>7/7</strong><span data-i18n="openWeek">training days</span></div>
-          <div><strong>07:30</strong><span data-i18n="firstSession">first session</span></div>
+          <button class="stat-card" data-scroll="#schedule"><strong>20+</strong><span data-i18n="sessionsWeek">weekly session types</span></button>
+          <button class="stat-card" data-scroll="#schedule"><strong>7/7</strong><span data-i18n="openWeek">training days</span></button>
+          <button class="stat-card" data-scroll="#schedule"><strong>07:30</strong><span data-i18n="firstSession">first session</span></button>
         </div>
       </div>
 
       <div class="hero-visual reveal">
         <div class="hero-photo">
-          <img src="assets/hero.png" alt="AA Sport gym">
+          <img src="assets/hero.png" alt="AA Sport gym" fetchpriority="high">
+          <div class="hero-photo-shade"></div>
+          <div class="hero-photo-caption">
+            <span data-i18n="heroCaptionEyebrow">MULTI-DISCIPLINE TRAINING</span>
+            <strong data-i18n="heroCaption">Built for every level.</strong>
+          </div>
         </div>
-        <div class="hero-stamp" aria-hidden="true"><span>#1 GYM IN</span><b>ANNABA</b></div>
+        <div class="hero-stamp" aria-label="AA Sport Annaba"><span>#1 GYM IN</span><b>ANNABA</b></div>
       </div>
     </section>
 
-    <section class="ticker" aria-hidden="true">
+    <section class="ticker" aria-label="Sports available">
       <div class="ticker-track">
         <span>BOXING</span><b>✦</b><span>MMA</span><b>✦</b><span>JUDO</span><b>✦</b><span>LUTTE</span><b>✦</b><span>JUJUTSU</span><b>✦</b><span>ZUMBA</span><b>✦</b><span>SELF DEFENSE</span><b>✦</b><span>BOXING</span><b>✦</b><span>MMA</span><b>✦</b><span>JUDO</span><b>✦</b><span>LUTTE</span><b>✦</b><span>JUJUTSU</span><b>✦</b><span>ZUMBA</span><b>✦</b><span>SELF DEFENSE</span><b>✦</b>
       </div>
@@ -106,46 +85,83 @@
     <section class="section schedule-section" id="schedule">
       <div class="shell">
         <div class="section-head schedule-heading reveal">
-          <div><span class="kicker" data-i18n="scheduleKicker">Weekly timetable</span><h2 data-i18n="scheduleTitle">FIND YOUR <em>SESSION.</em></h2></div>
-          <p data-i18n="scheduleIntro">Filter by day or category. Times shown are the current weekly schedule supplied by AA Sport.</p>
+          <div>
+            <span class="kicker" data-i18n="scheduleKicker">Weekly timetable</span>
+            <h2 data-i18n="scheduleTitle">FIND YOUR <em>SESSION.</em></h2>
+          </div>
+          <p data-i18n="scheduleIntro">Pick a day and training type. The schedule updates instantly so you can get straight to the session you want.</p>
         </div>
 
-        <div class="schedule-toolbar reveal">
-          <div class="day-filters" id="dayFilters"></div>
-          <label class="category-select">
-            <span data-i18n="filterLabel">Category</span>
-            <select id="categoryFilter">
-              <option value="all" data-i18n="filterAll">All programs</option>
-              <option value="kids" data-i18n="filterKids">Kids</option>
-              <option value="women" data-i18n="filterWomen">Women / Girls</option>
-              <option value="combat" data-i18n="filterCombat">Combat</option>
-              <option value="fitness" data-i18n="filterFitness">Fitness</option>
-              <option value="vip" data-i18n="filterVip">VIP</option>
-            </select>
-          </label>
+        <div class="schedule-shell reveal">
+          <div class="quick-picks" aria-label="Quick category filters">
+            <span data-i18n="quickPick">What do you want to train?</span>
+            <div class="quick-pick-row" id="quickPicks"></div>
+          </div>
+
+          <div class="schedule-toolbar">
+            <div class="day-filters" id="dayFilters"></div>
+            <label class="category-select">
+              <span data-i18n="filterLabel">Category</span>
+              <select id="categoryFilter">
+                <option value="all" data-i18n="filterAll">All programs</option>
+                <option value="kids" data-i18n="filterKids">Kids</option>
+                <option value="women" data-i18n="filterWomen">Women / Girls</option>
+                <option value="combat" data-i18n="filterCombat">Combat</option>
+                <option value="fitness" data-i18n="filterFitness">Fitness</option>
+                <option value="vip" data-i18n="filterVip">VIP</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="schedule-summary" id="scheduleSummary"></div>
+          <div class="schedule-grid" id="scheduleGrid" aria-live="polite"></div>
         </div>
-        <div class="schedule-grid reveal" id="scheduleGrid" aria-live="polite"></div>
       </div>
     </section>
 
-    <section class="section shell" id="coaches">
+    <section class="section team-section shell" id="coaches">
       <div class="section-head reveal">
-        <div><span class="kicker" data-i18n="coachesKicker">The team</span><h2>TRAIN WITH <em>THE TEAM.</em></h2></div>
-        <p>AA Sport brings multiple disciplines together under one roof, with specialist coaching for combat, fitness and self-defense.</p>
+        <div>
+          <span class="kicker" data-i18n="teamKicker">AA Sport team</span>
+          <h2 data-i18n="teamTitle">BUILT AROUND <em>REAL TRAINING.</em></h2>
+        </div>
+        <p data-i18n="teamIntro">Different disciplines need different coaching. AA Sport brings combat, conditioning and youth training together without turning the team section into a wall of random names.</p>
       </div>
-      <div class="coach-roster reveal">
-        <article class="coach-feature">
-          <div class="coach-avatar">AA</div>
-          <div><span>BOXING</span><h3>Coach Abdou Attala</h3><p>Boxing sessions and competitive training.</p></div>
+
+      <div class="coach-showcase reveal">
+        <article class="coach-spotlight interactive-card">
+          <div class="coach-monogram">AA</div>
+          <div class="coach-spotlight-copy">
+            <span class="coach-role" data-i18n="boxingCoach">BOXING · COMPETITION</span>
+            <h3>Coach Abdou Attala</h3>
+            <p data-i18n="abdouText">Boxing-focused coaching for technique, conditioning and competitive sessions.</p>
+            <div class="coach-actions">
+              <a class="btn btn-primary compact magnetic" href="https://www.instagram.com/coach_abdou_attala/" target="_blank" rel="noopener">@coach_abdou_attala <span>↗</span></a>
+              <button class="btn btn-soft compact" data-category-jump="combat"><span data-i18n="seeBoxingTimes">See combat times</span><span>→</span></button>
+            </div>
+          </div>
+          <div class="coach-watermark">BOXE</div>
         </article>
-        <article class="coach-feature">
-          <div class="coach-avatar">HS</div>
-          <div><span>LUTTE</span><h3>Hamid Saad</h3><p>Wrestling training and technical development.</p></div>
-        </article>
-        <article class="coach-more">
-          <span>+</span>
-          <div><h3>More specialist coaching</h3><p>Self-defense, MMA, judo, jujutsu, taekwondo, fitness and youth programs — without pretending we have photos for every coach.</p></div>
-        </article>
+
+        <div class="team-side">
+          <article class="coach-line interactive-card">
+            <div class="coach-line-number">02</div>
+            <div><span>LUTTE</span><h3>Hamid Saad</h3><p data-i18n="hamidText">Technical wrestling sessions focused on movement, control and development.</p></div>
+          </article>
+          <article class="team-disciplines interactive-card">
+            <span class="team-small" data-i18n="specialists">SPECIALIST TRAINING</span>
+            <h3 data-i18n="teamRangeTitle">One team. More ways to train.</h3>
+            <div class="discipline-cloud">
+              <button data-category-jump="combat">MMA</button>
+              <button data-category-jump="combat">JUDO</button>
+              <button data-category-jump="combat">JUJUTSU</button>
+              <button data-category-jump="women" data-i18n="selfDefenseChip">SELF DEFENSE</button>
+              <button data-category-jump="kids" data-i18n="kidsChip">KIDS</button>
+              <button data-category-jump="fitness">FITNESS</button>
+            </div>
+            <p data-i18n="teamRangeText">Tap a discipline to jump straight to matching sessions.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -155,11 +171,14 @@
           <span class="kicker" data-i18n="locationKicker">Visit AA Sport</span>
           <h2 data-i18n="locationTitle">YOUR NEXT SESSION <em>STARTS HERE.</em></h2>
           <p data-i18n="locationText">13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algeria.</p>
-          <div class="address-card">
+          <div class="address-card interactive-card">
             <span class="address-icon">⌖</span>
             <div><small data-i18n="addressLabel">ADDRESS</small><strong>13 Av. Colonel Amirouche<br>Annaba, Algeria</strong></div>
           </div>
-          <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=13+Av.+Colonel+Amirouche,+Annaba,+Algeria" target="_blank" rel="noopener"><span data-i18n="openMaps">Open in Google Maps</span><span>↗</span></a>
+          <div class="location-actions">
+            <a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&query=13+Av.+Colonel+Amirouche,+Annaba,+Algeria" target="_blank" rel="noopener"><span data-i18n="openMaps">Open in Google Maps</span><span>↗</span></a>
+            <a class="btn btn-ghost magnetic" href="https://www.instagram.com/aa_sport_dz/" target="_blank" rel="noopener">Instagram <span>↗</span></a>
+          </div>
         </div>
         <div class="map-wrap reveal">
           <iframe title="AA Sport DZ location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=13%20Av.%20Colonel%20Amirouche%2C%20Annaba%2C%20Algeria&output=embed"></iframe>
@@ -169,11 +188,15 @@
     </section>
 
     <section class="section contact-section shell" id="contact">
-      <div class="contact-panel reveal">
-        <div class="contact-copy"><span class="kicker" data-i18n="contactKicker">Ready to train?</span><h2 data-i18n="contactTitle">STEP IN. <em>LEVEL UP.</em></h2><p data-i18n="contactText">For prices, registration and more information, contact AA Sport directly on Instagram.</p></div>
+      <div class="contact-panel reveal interactive-card">
+        <div class="contact-copy">
+          <span class="kicker" data-i18n="contactKicker">Ready to train?</span>
+          <h2 data-i18n="contactTitle">STEP IN. <em>LEVEL UP.</em></h2>
+          <p data-i18n="contactText">For prices, registration and more information, contact AA Sport directly on Instagram.</p>
+        </div>
         <div class="contact-actions">
-          <a class="btn btn-dark" href="https://www.instagram.com/aa_sport_dz/" target="_blank" rel="noopener">Instagram <span>↗</span></a>
-          <a class="btn btn-outline-dark" href="#schedule"><span data-i18n="checkTimetable">Check timetable</span></a>
+          <a class="btn btn-dark magnetic" href="https://www.instagram.com/aa_sport_dz/" target="_blank" rel="noopener"><span data-i18n="messageInstagram">Message on Instagram</span><span>↗</span></a>
+          <a class="btn btn-outline-dark magnetic" href="#schedule"><span data-i18n="checkTimetable">Check timetable</span><span>↑</span></a>
         </div>
       </div>
     </section>
