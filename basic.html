@@ -10,13 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="proposal.css">
 </head>
 <body>
   <div class="ambient ambient-a" aria-hidden="true"></div><div class="ambient ambient-b" aria-hidden="true"></div>
   <header class="site-header"><nav class="navigation shell">
     <a class="brand" href="#top"><img src="assets/Icon.png" class="brand-logo" alt="AA Sport"><span class="brand-copy"><strong>AA SPORT</strong><small>ANNABA · DZ</small></span></a>
-    <div class="nav-links" id="navLinks"><a href="#programs" data-i18n="navPrograms">Programs</a><a href="#schedule" data-i18n="navSchedule">Schedule</a><a href="#coaches" data-i18n="navCoaches">Coaches</a><a href="#location" data-i18n="navLocation">Location</a></div>
+    <div class="nav-links" id="navLinks"><a href="#schedule" data-i18n="navSchedule">Schedule</a><a href="#coaches" data-i18n="navCoaches">Coaches</a><a href="#location" data-i18n="navLocation">Location</a></div>
     <div class="nav-actions"><div class="lang-switcher"><button class="lang-btn active" data-lang="en">EN</button><button class="lang-btn" data-lang="fr">FR</button><button class="lang-btn" data-lang="ar">DZ</button></div><a class="nav-cta" href="#contact" data-i18n="joinNow">Join now</a><button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span></button></div>
   </nav></header>
 
@@ -28,16 +27,6 @@
 
     <section class="ticker"><div class="ticker-track"><span>BOXING</span><b>✦</b><span>MMA</span><b>✦</b><span>JUDO</span><b>✦</b><span>LUTTE</span><b>✦</b><span>JUJUTSU</span><b>✦</b><span>ZUMBA</span><b>✦</b><span>SELF DEFENSE</span><b>✦</b><span>BOXING</span><b>✦</b><span>MMA</span><b>✦</b><span>JUDO</span><b>✦</b><span>LUTTE</span><b>✦</b></div></section>
 
-    <section class="section shell" id="programs"><div class="section-head reveal"><div><span class="kicker" data-i18n="programKicker">Choose your discipline</span><h2 data-i18n="programTitle">ONE GYM. <em>EVERY FIGHT.</em></h2></div><p data-i18n="programIntro">From your first class to competitive training, AA Sport has a place for every age and every level.</p></div>
-      <div class="program-grid useful-programs">
-        <article class="program-card program-card-large reveal"><div class="program-index">01</div><div class="program-icon">🥊</div><div class="program-copy"><span data-i18n="combatLabel">Combat sports</span><h3 data-i18n="combatTitle">Boxing · MMA · Judo</h3><p data-i18n="combatText">Technical training, conditioning and competitive sessions with experienced coaches.</p><div class="program-tags"><b>Boxing</b><b>MMA</b><b>Judo</b><b>Lutte</b><b>Jujutsu</b></div><a href="#schedule" class="text-link">See combat times →</a></div></article>
-        <article class="program-card reveal"><div class="program-index">02</div><div class="program-icon">⚡</div><div class="program-copy"><span data-i18n="fitnessLabel">Fitness</span><h3 data-i18n="fitnessTitle">Zumba · Aerobic</h3><p data-i18n="fitnessText">High-energy sessions built for movement, strength and confidence.</p><div class="program-tags"><b>Zumba</b><b>Aerobic</b><b>Tabata</b><b>Gymnastique</b></div></div></article>
-        <article class="program-card reveal"><div class="program-index">03</div><div class="program-icon">★</div><div class="program-copy"><span data-i18n="kidsLabel">Youth</span><h3 data-i18n="kidsTitle">Kids programs</h3><p data-i18n="kidsText">Jujutsu, wrestling, boxing, taekwondo and aerobic classes for younger athletes.</p><div class="program-detail"><strong>5 disciplines</strong><span>Dedicated weekly kids sessions</span></div></div></article>
-        <article class="program-card reveal"><div class="program-index">04</div><div class="program-icon">◆</div><div class="program-copy"><span data-i18n="womenLabel">Women</span><h3 data-i18n="womenTitle">Women & girls</h3><p data-i18n="womenText">Dedicated boxing and self-defense sessions in a focused training environment.</p><div class="program-detail"><strong>Boxing + Self Defense</strong><span>Dedicated sessions during the week</span></div></div></article>
-        <article class="program-card reveal"><div class="program-index">05</div><div class="program-icon">♛</div><div class="program-copy"><span data-i18n="vipLabel">Private</span><h3 data-i18n="vipTitle">VIP sessions</h3><p data-i18n="vipText">Early-morning and late-night VIP slots available throughout the week.</p><div class="program-detail"><strong>07:30 → 21:30</strong><span>Flexible VIP time slots</span></div></div></article>
-      </div>
-    </section>
-
     <section class="section schedule-section" id="schedule"><div class="shell"><div class="section-head schedule-heading reveal"><div><span class="kicker" data-i18n="scheduleKicker">Weekly timetable</span><h2 data-i18n="scheduleTitle">FIND YOUR <em>SESSION.</em></h2></div><p data-i18n="scheduleIntro">Filter by day or category. Times shown are the current weekly schedule supplied by AA Sport.</p></div><div class="schedule-toolbar reveal"><div class="day-filters" id="dayFilters"></div><label class="category-select"><span data-i18n="filterLabel">Category</span><select id="categoryFilter"><option value="all" data-i18n="filterAll">All programs</option><option value="kids" data-i18n="filterKids">Kids</option><option value="women" data-i18n="filterWomen">Women / Girls</option><option value="combat" data-i18n="filterCombat">Combat</option><option value="fitness" data-i18n="filterFitness">Fitness</option><option value="vip" data-i18n="filterVip">VIP</option></select></label></div><div class="schedule-grid reveal" id="scheduleGrid"></div></div></section>
 
     <section class="section shell" id="coaches"><div class="section-head reveal"><div><span class="kicker" data-i18n="coachesKicker">The team</span><h2>TRAIN WITH <em>THE TEAM.</em></h2></div><p>AA Sport brings multiple disciplines together under one roof, with specialist coaching for combat, fitness and self-defense.</p></div>
@@ -48,6 +37,6 @@
 
     <section class="section contact-section shell" id="contact"><div class="contact-panel reveal"><div class="contact-copy"><span class="kicker" data-i18n="contactKicker">Ready to train?</span><h2 data-i18n="contactTitle">STEP IN. <em>LEVEL UP.</em></h2><p data-i18n="contactText">For prices, registration and more information, contact AA Sport directly on Instagram.</p></div><div class="contact-actions"><a class="btn btn-dark" href="https://www.instagram.com/aa_sport_dz/" target="_blank">Instagram <span>↗</span></a><a class="btn btn-outline-dark" href="#schedule"><span data-i18n="checkTimetable">Check timetable</span></a></div></div></section>
   </main>
-  <footer class="footer"><div class="shell footer-inner"><a class="brand footer-brand" href="#top"><img src="assets/Icon.png" class="brand-logo" alt="AA Sport"><span class="brand-copy"><strong>AA SPORT</strong><small>ANNABA · DZ</small></span></a><p>© <span id="year"></span> AA Sport DZ.</p><a href="index.html" class="back-top">Website options ←</a></div></footer>
+  <footer class="footer"><div class="shell footer-inner"><a class="brand footer-brand" href="#top"><img src="assets/Icon.png" class="brand-logo" alt="AA Sport"><span class="brand-copy"><strong>AA SPORT</strong><small>ANNABA · DZ</small></span></a><p>© <span id="year"></span> AA Sport DZ.</p><a href="#top" class="back-top">Back to top ↑</a></div></footer>
   <script src="script.js"></script>
 </body></html>
