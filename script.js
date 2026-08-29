@@ -1,293 +1,133 @@
-const DAYS = ['friday','saturday','sunday','monday','tuesday','wednesday','thursday'];
-
-const dayLabels = {
+const DAYS=['friday','saturday','sunday','monday','tuesday','wednesday','thursday'];
+const dayLabels={
   en:{all:'All days',friday:'Fri',saturday:'Sat',sunday:'Sun',monday:'Mon',tuesday:'Tue',wednesday:'Wed',thursday:'Thu'},
   fr:{all:'Tous',friday:'Ven',saturday:'Sam',sunday:'Dim',monday:'Lun',tuesday:'Mar',wednesday:'Mer',thursday:'Jeu'},
   ar:{all:'كامل',friday:'الجمعة',saturday:'السبت',sunday:'الأحد',monday:'الإثنين',tuesday:'الثلاثاء',wednesday:'الأربعاء',thursday:'الخميس'}
 };
-
-const names = {
+const names={
   'VIP 1':{fr:'VIP 1',ar:'VIP 1'},'VIP 2':{fr:'VIP 2',ar:'VIP 2'},'VIP 3':{fr:'VIP 3',ar:'VIP 3'},'VIP 4':{fr:'VIP 4',ar:'VIP 4'},'VIP':{fr:'VIP',ar:'VIP'},
-  'Jujutsu Kids':{fr:'Jujutsu enfants',ar:'جوجيتسو للصغار'},
-  'Lutte Kids':{fr:'Lutte enfants',ar:'مصارعة للصغار'},
-  'Boxe Kids':{fr:'Boxe enfants',ar:'بوكس للصغار'},
-  'Taekwondo':{fr:'Taekwondo',ar:'تايكواندو'},
-  'Aérobic Kids':{fr:'Aérobic enfants',ar:'أيروبيك للصغار'},
-  'Boxe Femme':{fr:'Boxe femme',ar:'بوكس للنساء'},
-  'Boxe Fille':{fr:'Boxe fille',ar:'بوكس للبنات'},
-  'Self Defense Fille':{fr:'Self-défense fille',ar:'دفاع عن النفس للبنات'},
-  'Boxe Compétitif':{fr:'Boxe compétitive',ar:'بوكس تنافسي'},
-  'Boxe Libre':{fr:'Boxe libre',ar:'بوكس حر'},
-  'Boxe Loisirs':{fr:'Boxe loisirs',ar:'بوكس ترفيهي'},
-  'Boxe Adulte':{fr:'Boxe adulte',ar:'بوكس للكبار'},
-  'MMA':{fr:'MMA',ar:'MMA'},
-  'Judo':{fr:'Judo',ar:'جيدو'},
-  'Lutte':{fr:'Lutte',ar:'مصارعة'},
-  'Jujutsu':{fr:'Jujutsu',ar:'جوجيتسو'},
-  'Self Defense':{fr:'Self-défense',ar:'دفاع عن النفس'},
-  'Aérobic':{fr:'Aérobic',ar:'أيروبيك'},
-  'Zumba':{fr:'Zumba',ar:'زومبا'},
-  'Gymnastique':{fr:'Gymnastique',ar:'جمباز'},
-  'Tabata':{fr:'Tabata',ar:'تاباتا'},
-  'Libre':{fr:'Libre',ar:'حصة حرة'}
+  'Jujutsu Kids':{fr:'Jujutsu enfants',ar:'جوجيتسو للصغار'},'Lutte Kids':{fr:'Lutte enfants',ar:'مصارعة للصغار'},'Boxe Kids':{fr:'Boxe enfants',ar:'بوكس للصغار'},'Taekwondo':{fr:'Taekwondo',ar:'تايكواندو'},'Aérobic Kids':{fr:'Aérobic enfants',ar:'أيروبيك للصغار'},
+  'Boxe Femme':{fr:'Boxe femme',ar:'بوكس للنساء'},'Boxe Fille':{fr:'Boxe fille',ar:'بوكس للبنات'},'Self Defense Fille':{fr:'Self-défense fille',ar:'دفاع عن النفس للبنات'},'Boxe Compétitif':{fr:'Boxe compétitive',ar:'بوكس تنافسي'},'Boxe Libre':{fr:'Boxe libre',ar:'بوكس حر'},'Boxe Loisirs':{fr:'Boxe loisirs',ar:'بوكس ترفيهي'},'Boxe Adulte':{fr:'Boxe adulte',ar:'بوكس للكبار'},
+  'MMA':{fr:'MMA',ar:'MMA'},'Judo':{fr:'Judo',ar:'جيدو'},'Lutte':{fr:'Lutte',ar:'مصارعة'},'Jujutsu':{fr:'Jujutsu',ar:'جوجيتسو'},'Self Defense':{fr:'Self-défense',ar:'دفاع عن النفس'},'Aérobic':{fr:'Aérobic',ar:'أيروبيك'},'Zumba':{fr:'Zumba',ar:'زومبا'},'Gymnastique':{fr:'Gymnastique',ar:'جمباز'},'Tabata':{fr:'Tabata',ar:'تاباتا'},'Libre':{fr:'Libre',ar:'حصة حرة'}
+};
+const categoryLabels={en:{kids:'Kids',women:'Women / Girls',combat:'Combat',fitness:'Fitness',vip:'VIP'},fr:{kids:'Enfants',women:'Femmes / Filles',combat:'Combat',fitness:'Fitness',vip:'VIP'},ar:{kids:'الصغار',women:'نساء / بنات',combat:'رياضات قتالية',fitness:'لياقة',vip:'VIP'}};
+const sportTicker={en:['BOXING','MMA','JUDO','WRESTLING','JUJUTSU','ZUMBA','SELF DEFENSE'],fr:['BOXE','MMA','JUDO','LUTTE','JUJUTSU','ZUMBA','SELF-DÉFENSE'],ar:['بوكس','MMA','جيدو','مصارعة','جوجيتسو','زومبا','دفاع عن النفس']};
+const teamDisciplineLabels={en:[['combat','BOXING'],['combat','MMA'],['combat','JUDO'],['combat','JUJUTSU'],['combat','SELF DEFENSE'],['kids','KIDS'],['fitness','FITNESS'],['women','WOMEN'],['vip','VIP']],fr:[['combat','BOXE'],['combat','MMA'],['combat','JUDO'],['combat','JUJUTSU'],['combat','SELF-DÉFENSE'],['kids','ENFANTS'],['fitness','FITNESS'],['women','FEMMES'],['vip','VIP']],ar:[['combat','بوكس'],['combat','MMA'],['combat','جيدو'],['combat','جوجيتسو'],['combat','دفاع عن النفس'],['kids','الصغار'],['fitness','لياقة'],['women','نساء'],['vip','VIP']]};
+const reviewHighlights={
+  en:[['5.0 ★','Google rating'],['5 reviews','Current Google review count'],['Clear technique','Explained step by step'],['Patient corrections','Mistakes corrected without rushing'],['Structured training','Sessions feel organized and effective'],['Serious + friendly','A focused atmosphere without the ego']],
+  fr:[['5,0 ★','Note Google'],['5 avis','Nombre actuel d’avis Google'],['Technique claire','Explications étape par étape'],['Corrections patientes','Les erreurs sont corrigées sans précipitation'],['Entraînement structuré','Des séances organisées et efficaces'],['Sérieux + convivial','Une ambiance concentrée sans pression inutile']],
+  ar:[['5.0 ★','تقييم Google'],['5 تقييمات','العدد الحالي في Google'],['شرح واضح','التقنيات تتشرح خطوة بخطوة'],['تصحيح بصبر','الأخطاء تتصلح بلا استعجال'],['تدريب منظم','الحصص واضحة وفعالة'],['جدي ومريح','جو يخليك تركز وتتعلم براحتك']]
 };
 
-const categoryLabels = {
-  en:{kids:'Kids',women:'Women / Girls',combat:'Combat',fitness:'Fitness',vip:'VIP'},
-  fr:{kids:'Enfants',women:'Femmes / Filles',combat:'Combat',fitness:'Fitness',vip:'VIP'},
-  ar:{kids:'الصغار',women:'نساء / بنات',combat:'رياضات قتالية',fitness:'لياقة',vip:'VIP'}
-};
-
-const categoryQuick = {
-  en:[['all','Everything'],['combat','Combat'],['fitness','Fitness'],['kids','Kids'],['women','Women'],['vip','VIP']],
-  fr:[['all','Tout'],['combat','Combat'],['fitness','Fitness'],['kids','Enfants'],['women','Femmes'],['vip','VIP']],
-  ar:[['all','الكل'],['combat','قتال'],['fitness','لياقة'],['kids','صغار'],['women','نساء'],['vip','VIP']]
-};
-
-const sportTicker = {
-  en:['BOXING','MMA','JUDO','WRESTLING','JUJUTSU','ZUMBA','SELF DEFENSE'],
-  fr:['BOXE','MMA','JUDO','LUTTE','JUJUTSU','ZUMBA','SELF-DÉFENSE'],
-  ar:['بوكس','MMA','جيدو','مصارعة','جوجيتسو','زومبا','دفاع عن النفس']
-};
-
-const teamDisciplineLabels = {
-  en:['MMA','JUDO','JUJUTSU','SELF DEFENSE','KIDS','FITNESS'],
-  fr:['MMA','JUDO','JUJUTSU','SELF-DÉFENSE','ENFANTS','FITNESS'],
-  ar:['MMA','جيدو','جوجيتسو','دفاع عن النفس','الصغار','لياقة']
-};
-
-const schedule = [
-  ['friday','07:30','VIP 1','vip'],['saturday','07:30','VIP','vip'],['sunday','07:30','VIP 1','vip'],['monday','07:30','VIP 2','vip'],['tuesday','07:30','VIP 1','vip'],['wednesday','07:30','VIP','vip'],['thursday','07:30','VIP 2','vip'],
-  ['friday','09:00','Jujutsu Kids','kids'],['saturday','09:00','Taekwondo','kids'],['sunday','09:00','Boxe Compétitif','combat'],['monday','09:00','VIP 3','vip'],['tuesday','09:00','Boxe Compétitif','combat'],['wednesday','09:00','VIP 3','vip'],['thursday','09:00','Boxe Compétitif','combat'],
-  ['friday','10:30','Lutte Kids','kids'],['saturday','10:30','Jujutsu Kids','kids'],['sunday','10:30','Boxe Femme','women'],['monday','10:30','Self Defense Fille','women'],['tuesday','10:30','Boxe Femme','women'],['wednesday','10:30','Self Defense Fille','women'],['thursday','10:30','Boxe Femme','women'],
-  ['saturday','13:00','Boxe Kids','kids'],['sunday','13:00','Boxe Libre','combat'],['monday','13:00','Boxe Libre','combat'],['tuesday','13:00','Lutte Kids','kids'],['wednesday','13:00','Boxe Libre','combat'],['thursday','13:00','Boxe Libre','combat'],
-  ['friday','14:30','Boxe Kids','kids'],['saturday','14:30','Aérobic Kids','kids'],['sunday','14:30','Boxe Fille','women'],['monday','14:30','Zumba','fitness'],['tuesday','14:30','Boxe Fille','women'],['wednesday','14:30','Libre','fitness'],['thursday','14:30','Aérobic Kids','kids'],
-  ['friday','16:00','Taekwondo','kids'],['saturday','16:00','Aérobic','fitness'],['sunday','16:00','Zumba','fitness'],['monday','16:00','Aérobic','fitness'],['tuesday','16:00','Gymnastique','fitness'],['wednesday','16:00','Tabata','fitness'],['thursday','16:00','Aérobic','fitness'],
-  ['friday','17:30','Boxe Loisirs','combat'],['saturday','17:30','Boxe Compétitif','combat'],['sunday','17:30','MMA','combat'],['monday','17:30','MMA','combat'],['tuesday','17:30','Boxe Compétitif','combat'],['wednesday','17:30','MMA','combat'],['thursday','17:30','Boxe Compétitif','combat'],
-  ['friday','19:00','Judo','combat'],['saturday','19:00','Boxe Adulte','combat'],['sunday','19:00','Judo','combat'],['monday','19:00','Lutte','combat'],['tuesday','19:00','Judo','combat'],['wednesday','19:00','Boxe Adulte','combat'],['thursday','19:00','Lutte','combat'],
-  ['friday','20:30','VIP 2','vip'],['saturday','20:30','Jujutsu','combat'],['sunday','20:30','Self Defense','combat'],['monday','20:30','Jujutsu','combat'],['tuesday','20:30','Boxe Loisirs','combat'],['wednesday','20:30','Self Defense','combat'],['thursday','20:30','VIP 4','vip'],
-  ['friday','21:30','VIP 3','vip'],['saturday','21:30','VIP 1','vip'],['sunday','21:30','VIP 4','vip'],['monday','21:30','VIP 2','vip'],['tuesday','21:30','VIP 1','vip'],['wednesday','21:30','VIP 3','vip'],['thursday','21:30','VIP 2','vip']
+const schedule=[
+['friday','07:30','VIP 1','vip'],['saturday','07:30','VIP','vip'],['sunday','07:30','VIP 1','vip'],['monday','07:30','VIP 2','vip'],['tuesday','07:30','VIP 1','vip'],['wednesday','07:30','VIP','vip'],['thursday','07:30','VIP 2','vip'],
+['friday','09:00','Jujutsu Kids','kids'],['saturday','09:00','Taekwondo','kids'],['sunday','09:00','Boxe Compétitif','combat'],['monday','09:00','VIP 3','vip'],['tuesday','09:00','Boxe Compétitif','combat'],['wednesday','09:00','VIP 3','vip'],['thursday','09:00','Boxe Compétitif','combat'],
+['friday','10:30','Lutte Kids','kids'],['saturday','10:30','Jujutsu Kids','kids'],['sunday','10:30','Boxe Femme','women'],['monday','10:30','Self Defense Fille','women'],['tuesday','10:30','Boxe Femme','women'],['wednesday','10:30','Self Defense Fille','women'],['thursday','10:30','Boxe Femme','women'],
+['saturday','13:00','Boxe Kids','kids'],['sunday','13:00','Boxe Libre','combat'],['monday','13:00','Boxe Libre','combat'],['tuesday','13:00','Lutte Kids','kids'],['wednesday','13:00','Boxe Libre','combat'],['thursday','13:00','Boxe Libre','combat'],
+['friday','14:30','Boxe Kids','kids'],['saturday','14:30','Aérobic Kids','kids'],['sunday','14:30','Boxe Fille','women'],['monday','14:30','Zumba','fitness'],['tuesday','14:30','Boxe Fille','women'],['wednesday','14:30','Libre','fitness'],['thursday','14:30','Aérobic Kids','kids'],
+['friday','16:00','Taekwondo','kids'],['saturday','16:00','Aérobic','fitness'],['sunday','16:00','Zumba','fitness'],['monday','16:00','Aérobic','fitness'],['tuesday','16:00','Gymnastique','fitness'],['wednesday','16:00','Tabata','fitness'],['thursday','16:00','Aérobic','fitness'],
+['friday','17:30','Boxe Loisirs','combat'],['saturday','17:30','Boxe Compétitif','combat'],['sunday','17:30','MMA','combat'],['monday','17:30','MMA','combat'],['tuesday','17:30','Boxe Compétitif','combat'],['wednesday','17:30','MMA','combat'],['thursday','17:30','Boxe Compétitif','combat'],
+['friday','19:00','Judo','combat'],['saturday','19:00','Boxe Adulte','combat'],['sunday','19:00','Judo','combat'],['monday','19:00','Lutte','combat'],['tuesday','19:00','Judo','combat'],['wednesday','19:00','Boxe Adulte','combat'],['thursday','19:00','Lutte','combat'],
+['friday','20:30','VIP 2','vip'],['saturday','20:30','Jujutsu','combat'],['sunday','20:30','Self Defense','combat'],['monday','20:30','Jujutsu','combat'],['tuesday','20:30','Boxe Loisirs','combat'],['wednesday','20:30','Self Defense','combat'],['thursday','20:30','VIP 4','vip'],
+['friday','21:30','VIP 3','vip'],['saturday','21:30','VIP 1','vip'],['sunday','21:30','VIP 4','vip'],['monday','21:30','VIP 2','vip'],['tuesday','21:30','VIP 1','vip'],['wednesday','21:30','VIP 3','vip'],['thursday','21:30','VIP 2','vip']
 ].map(([day,time,name,category])=>({day,time,name,category}));
 
-const i18n = {
-  en:{
-    navSchedule:'Schedule',navTeam:'Team',navLocation:'Location',joinNow:'Join now',
-    heroLabel:'AA SPORT · ANNABA',heroLine1:'TRAIN',heroLine2:'WITHOUT LIMITS.',heroDesc:'Boxing, MMA, judo, wrestling, self-defense, kids programs and fitness — all under one roof in the heart of Annaba.',viewSchedule:'View schedule',findUs:'Find us',sessionsWeek:'weekly session types',openWeek:'training days',firstSession:'first session',heroCaptionEyebrow:'MULTI-DISCIPLINE TRAINING',heroCaption:'Built for every level.',
-    scheduleKicker:'Weekly timetable',scheduleTitle:'FIND YOUR <em>SESSION.</em>',scheduleIntro:'Pick a day and training type. The schedule updates instantly so you can get straight to the session you want.',quickPick:'What do you want to train?',filterLabel:'Category',filterAll:'All programs',filterKids:'Kids',filterWomen:'Women / Girls',filterCombat:'Combat',filterFitness:'Fitness',filterVip:'VIP',noSessions:'No sessions match these filters.',summaryAll:'Showing all weekly sessions',summaryFiltered:'Showing {count} matching sessions',
-    teamKicker:'AA Sport team',teamTitle:'BUILT AROUND <em>REAL TRAINING.</em>',teamIntro:'Different disciplines need different coaching. AA Sport brings combat, conditioning and youth training together without turning the team section into a wall of random names.',boxingCoach:'BOXING · COMPETITION',abdouText:'Boxing-focused coaching for technique, conditioning and competitive sessions.',seeBoxingTimes:'See combat times',hamidText:'Technical wrestling sessions focused on movement, control and development.',specialists:'SPECIALIST TRAINING',teamRangeTitle:'One team. More ways to train.',teamRangeText:'Tap a discipline to jump straight to matching sessions.',selfDefenseChip:'SELF DEFENSE',kidsChip:'KIDS',
-    locationKicker:'Visit AA Sport',locationTitle:'YOUR NEXT SESSION <em>STARTS HERE.</em>',locationText:'13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algeria.',addressLabel:'ADDRESS',openMaps:'Open in Google Maps',
-    contactKicker:'Ready to train?',contactTitle:'STEP IN. <em>LEVEL UP.</em>',contactText:'For prices, registration and more information, contact AA Sport directly on Instagram.',messageInstagram:'Message on Instagram',checkTimetable:'Check timetable',rights:'All rights reserved.',backTop:'Back to top'
-  },
-  fr:{
-    navSchedule:'Planning',navTeam:'Équipe',navLocation:'Adresse',joinNow:'Nous rejoindre',
-    heroLabel:'AA SPORT · ANNABA',heroLine1:'ENTRAÎNE-TOI',heroLine2:'SANS LIMITES.',heroDesc:'Boxe, MMA, judo, lutte, self-défense, programmes enfants et fitness — tout au même endroit, au cœur d’Annaba.',viewSchedule:'Voir le planning',findUs:'Nous trouver',sessionsWeek:'types de séances',openWeek:'jours d’entraînement',firstSession:'première séance',heroCaptionEyebrow:'ENTRAÎNEMENT MULTIDISCIPLINAIRE',heroCaption:'Pour tous les niveaux.',
-    scheduleKicker:'Planning hebdomadaire',scheduleTitle:'TROUVE TA <em>SÉANCE.</em>',scheduleIntro:'Choisis un jour et un type d’entraînement. Le planning se met à jour instantanément pour trouver rapidement ta séance.',quickPick:'Tu veux entraîner quoi ?',filterLabel:'Catégorie',filterAll:'Tous les programmes',filterKids:'Enfants',filterWomen:'Femmes / Filles',filterCombat:'Combat',filterFitness:'Fitness',filterVip:'VIP',noSessions:'Aucune séance ne correspond à ces filtres.',summaryAll:'Toutes les séances de la semaine',summaryFiltered:'{count} séances correspondent à ta recherche',
-    teamKicker:'L’équipe AA Sport',teamTitle:'UNE ÉQUIPE POUR <em>LE VRAI TRAVAIL.</em>',teamIntro:'Chaque discipline demande un encadrement différent. AA Sport réunit combat, conditionnement et entraînement des jeunes dans une seule salle.',boxingCoach:'BOXE · COMPÉTITION',abdouText:'Coaching de boxe axé sur la technique, le conditionnement et la préparation compétitive.',seeBoxingTimes:'Voir les horaires combat',hamidText:'Séances de lutte axées sur la technique, le mouvement, le contrôle et la progression.',specialists:'ENTRAÎNEMENTS SPÉCIALISÉS',teamRangeTitle:'Une équipe. Plusieurs façons de progresser.',teamRangeText:'Appuie sur une discipline pour afficher directement les séances correspondantes.',selfDefenseChip:'SELF-DÉFENSE',kidsChip:'ENFANTS',
-    locationKicker:'Venir à AA Sport',locationTitle:'TA PROCHAINE SÉANCE <em>COMMENCE ICI.</em>',locationText:'13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algérie.',addressLabel:'ADRESSE',openMaps:'Ouvrir dans Google Maps',
-    contactKicker:'Prêt à t’entraîner ?',contactTitle:'ENTRE. <em>PASSE AU NIVEAU SUPÉRIEUR.</em>',contactText:'Pour les tarifs, l’inscription et plus d’informations, contacte AA Sport directement sur Instagram.',messageInstagram:'Écrire sur Instagram',checkTimetable:'Voir le planning',rights:'Tous droits réservés.',backTop:'Retour en haut'
-  },
-  ar:{
-    navSchedule:'البرنامج',navTeam:'الفريق',navLocation:'المكان',joinNow:'سجّل معنا',
-    heroLabel:'AA SPORT · عنابة',heroLine1:'تدرّب',heroLine2:'بلا حدود.',heroDesc:'بوكس، MMA، جيدو، مصارعة، دفاع عن النفس، حصص للصغار ولياقة — كامل في بلاصة وحدة في قلب عنابة.',viewSchedule:'شوف البرنامج',findUs:'لقانا',sessionsWeek:'أنواع حصص في الأسبوع',openWeek:'أيام تدريب',firstSession:'أول حصة',heroCaptionEyebrow:'تدريب متعدد الرياضات',heroCaption:'لكل مستوى كاين بلاصتو.',
-    scheduleKicker:'برنامج الأسبوع',scheduleTitle:'لقى <em>الحصة تاعك.</em>',scheduleIntro:'اختار النهار ونوع التدريب، والبرنامج يتبدل مباشرة باش تلقى الحصة لي تحتاجها بلا تعقيد.',quickPick:'واش حاب تتمرن؟',filterLabel:'الفئة',filterAll:'كل الحصص',filterKids:'الصغار',filterWomen:'نساء / بنات',filterCombat:'رياضات قتالية',filterFitness:'لياقة',filterVip:'VIP',noSessions:'ماكان حتى حصة توافق هاذ الفيلتر.',summaryAll:'هاذي كامل حصص الأسبوع',summaryFiltered:'لقينا {count} حصص توافق اختيارك',
-    teamKicker:'فريق AA Sport',teamTitle:'فريق مبني على <em>تدريب حقيقي.</em>',teamIntro:'كل رياضة تحتاج تدريبها الخاص. في AA Sport تلقى رياضات قتالية، لياقة، وحصص للصغار كامل في نفس القاعة.',boxingCoach:'بوكس · منافسة',abdouText:'تدريب بوكس مركز على التقنية، اللياقة والتحضير للمنافسات.',seeBoxingTimes:'شوف أوقات القتال',hamidText:'حصص مصارعة مركزة على التقنية، الحركة، التحكم والتطور.',specialists:'تدريب متخصص',teamRangeTitle:'فريق واحد، طرق كثيرة باش تتطور.',teamRangeText:'اضغط على الرياضة باش تروح مباشرة للحصص تاعها.',selfDefenseChip:'دفاع عن النفس',kidsChip:'الصغار',
-    locationKicker:'زور AA Sport',locationTitle:'الحصة الجاية <em>تبدا من هنا.</em>',locationText:'13 شارع العقيد عميروش، عنابة 23000، الجزائر.',addressLabel:'العنوان',openMaps:'افتح في Google Maps',
-    contactKicker:'واجد تتمرن؟',contactTitle:'ادخل. <em>وطلع المستوى.</em>',contactText:'للأسعار، التسجيل ومعلومات أكثر، تواصل مع AA Sport مباشرة في Instagram.',messageInstagram:'ابعث في Instagram',checkTimetable:'شوف البرنامج',rights:'جميع الحقوق محفوظة.',backTop:'اطلع للفوق'
-  }
+const i18n={
+ en:{navSchedule:'Schedule',navTeam:'Coach',navReviews:'Reviews',navLocation:'Location',joinNow:'Join now',heroLabel:'AA SPORT · ANNABA',heroLine1:'TRAIN',heroLine2:'WITHOUT LIMITS.',heroDesc:'Boxing, MMA, judo, wrestling, self-defense, kids programs and fitness — all under one roof in the heart of Annaba.',viewSchedule:'View schedule',findUs:'Find us',sessionsWeek:'weekly session types',openWeek:'training days',firstSession:'first session',heroCaptionEyebrow:'MULTI-DISCIPLINE TRAINING',heroCaption:'Built for every level.',proofOneTitle:'Training all week',proofOneText:'Sessions run across all 7 days, from early morning to late evening.',proofTwoTitle:'For every level',proofTwoText:'Kids, adults, women, competitors and beginners all have dedicated sessions.',proofThreeTitle:'One place, many disciplines',proofThreeText:'Combat sports, conditioning, fitness and private VIP sessions under one roof.',scheduleKicker:'Weekly timetable',scheduleTitle:'FIND YOUR <em>SESSION.</em>',scheduleIntro:'No giant timetable wall. Pick a day, preview a few sessions, then open the full schedule only when you need it.',openFullSchedule:'Open full timetable',scheduleNote:'Filter the full timetable by day, category, kids, women, combat, fitness or VIP.',seeEverything:'See every session',experienceKicker:'Why AA Sport',experienceTitle:'TRAINING THAT <em>HAS A POINT.</em>',experienceIntro:'Useful details, not filler: what the club actually offers and why the schedule works for different kinds of members.',experienceCombatTitle:'Combat training',experienceCombatText:'Boxing, MMA, judo, wrestling, jujutsu and self-defense throughout the week.',experienceKidsTitle:'Kids programs',experienceKidsText:'Dedicated kids sessions for jujutsu, wrestling, boxing, taekwondo and aerobic training.',experienceWomenTitle:'Women & girls',experienceWomenText:'Dedicated boxing and self-defense sessions with multiple weekly time slots.',experienceVipTitle:'VIP flexibility',experienceVipText:'Early 07:30 sessions and late-night options for members who need more flexibility.',tapToFilter:'Tap to filter schedule →',teamKicker:'Boxing coach',teamTitle:'TRAIN WITH <em>PURPOSE.</em>',teamIntro:'Technique, structure, corrections and progression — the coaching focus is on making every session count.',boxingCoach:'BOXING · COMPETITION',annabaBadge:'ANNABA',abdouText:'Boxing-focused coaching built around clear technique, patient corrections, conditioning and competitive preparation.',seeBoxingTimes:'See combat times',coachPointOne:'Technique first',coachPointOneText:'Clear explanations and repeatable fundamentals.',coachPointTwo:'Structured sessions',coachPointTwoText:'A session has a goal, not just random drills.',coachPointThree:'Competition ready',coachPointThreeText:'Training options for serious competitive development.',trainingFocusKicker:'More ways to train',trainingFocusTitle:'Pick what you want to work on.',reviewsKicker:'Google reviews',reviewsTitle:'WHAT PEOPLE <em>NOTICE.</em>',googleReviewsLabel:'Google reviews',openGoogleReviews:'Open on Google Maps ↗',googleReviewer:'Google reviewer',reviewAge:'a month ago',featuredReview:'“An excellent boxing club! The coach takes the time to thoroughly explain each technique, corrects mistakes patiently, and motivates the entire group. The training is clear, structured, and very effective. Honestly, it was a fantastic experience — serious, friendly, and easy to recommend.”',reviewSource:'Featured Google Maps review',locationKicker:'Visit AA Sport',locationTitle:'YOUR NEXT SESSION <em>STARTS HERE.</em>',locationText:'13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algeria.',addressLabel:'ADDRESS',hoursLabel:'OPENING HOURS',hoursValue:'Daily · 08:00–22:30',openMaps:'Open in Google Maps',callGym:'Call the gym',faqKicker:'Quick answers',faqTitle:'BEFORE YOU <em>GO.</em>',faqIntro:'A few useful answers so visitors can decide faster instead of hunting through messages.',faqQ1:'Do you have kids sessions?',faqA1:'Yes. Kids sessions include jujutsu, wrestling, boxing, taekwondo and aerobic training on multiple days.',faqQ2:'Are there women-only sessions?',faqA2:'Yes. There are dedicated boxing sessions for women and girls, plus self-defense sessions for girls.',faqQ3:'Can I train early or late?',faqA3:'Yes. VIP slots start from 07:30 and late sessions run up to 21:30 depending on the day.',faqQ4:'How do I ask about prices?',faqA4:'Message AA Sport directly on Instagram for current pricing, registration and availability.',contactKicker:'Ready to train?',contactTitle:'STEP IN. <em>LEVEL UP.</em>',contactText:'For prices, registration and more information, contact AA Sport directly on Instagram.',messageInstagram:'Message on Instagram',checkTimetable:'Check timetable',rights:'All rights reserved.',backTop:'Back to top',fullScheduleKicker:'Full weekly timetable',fullScheduleTitle:'ALL SESSIONS.',filterLabel:'Category',filterAll:'All programs',filterKids:'Kids',filterWomen:'Women / Girls',filterCombat:'Combat',filterFitness:'Fitness',filterVip:'VIP',noSessions:'No sessions match these filters.',summaryAll:'Showing all weekly sessions',summaryFiltered:'Showing {count} matching sessions'},
+ fr:{navSchedule:'Planning',navTeam:'Coach',navReviews:'Avis',navLocation:'Adresse',joinNow:'Nous rejoindre',heroLabel:'AA SPORT · ANNABA',heroLine1:'ENTRAÎNE-TOI',heroLine2:'SANS LIMITES.',heroDesc:'Boxe, MMA, judo, lutte, self-défense, programmes enfants et fitness — tout au même endroit, au cœur d’Annaba.',viewSchedule:'Voir le planning',findUs:'Nous trouver',sessionsWeek:'types de séances',openWeek:'jours d’entraînement',firstSession:'première séance',heroCaptionEyebrow:'ENTRAÎNEMENT MULTIDISCIPLINAIRE',heroCaption:'Pour tous les niveaux.',proofOneTitle:'Entraînement toute la semaine',proofOneText:'Des séances les 7 jours, tôt le matin jusqu’en soirée.',proofTwoTitle:'Pour tous les niveaux',proofTwoText:'Enfants, adultes, femmes, compétiteurs et débutants ont des créneaux dédiés.',proofThreeTitle:'Une salle, plusieurs disciplines',proofThreeText:'Sports de combat, conditionnement, fitness et séances VIP au même endroit.',scheduleKicker:'Planning hebdomadaire',scheduleTitle:'TROUVE TA <em>SÉANCE.</em>',scheduleIntro:'Pas de mur géant d’horaires. Choisis un jour, regarde quelques séances puis ouvre le planning complet seulement si tu en as besoin.',openFullSchedule:'Ouvrir le planning complet',scheduleNote:'Filtre le planning complet par jour, catégorie, enfants, femmes, combat, fitness ou VIP.',seeEverything:'Voir toutes les séances',experienceKicker:'Pourquoi AA Sport',experienceTitle:'UN ENTRAÎNEMENT <em>QUI A UN BUT.</em>',experienceIntro:'Des infos utiles, pas du remplissage : ce que la salle propose réellement et pourquoi le planning convient à différents membres.',experienceCombatTitle:'Sports de combat',experienceCombatText:'Boxe, MMA, judo, lutte, jujutsu et self-défense pendant la semaine.',experienceKidsTitle:'Programmes enfants',experienceKidsText:'Séances dédiées en jujutsu, lutte, boxe, taekwondo et aérobic.',experienceWomenTitle:'Femmes & filles',experienceWomenText:'Créneaux dédiés de boxe et self-défense plusieurs fois par semaine.',experienceVipTitle:'Flexibilité VIP',experienceVipText:'Séances dès 07:30 et créneaux tardifs pour les membres qui ont besoin de flexibilité.',tapToFilter:'Filtrer le planning →',teamKicker:'Coach de boxe',teamTitle:'ENTRAÎNE-TOI AVEC <em>UN OBJECTIF.</em>',teamIntro:'Technique, structure, corrections et progression — l’objectif est que chaque séance serve vraiment.',boxingCoach:'BOXE · COMPÉTITION',annabaBadge:'ANNABA',abdouText:'Coaching de boxe axé sur une technique claire, des corrections patientes, le conditionnement et la préparation à la compétition.',seeBoxingTimes:'Voir les horaires combat',coachPointOne:'La technique d’abord',coachPointOneText:'Des explications claires et des bases qu’on peut répéter.',coachPointTwo:'Séances structurées',coachPointTwoText:'Chaque séance a un objectif, pas des exercices au hasard.',coachPointThree:'Prêt pour la compétition',coachPointThreeText:'Des options pour une progression compétitive sérieuse.',trainingFocusKicker:'Plus de façons de s’entraîner',trainingFocusTitle:'Choisis ce que tu veux travailler.',reviewsKicker:'Avis Google',reviewsTitle:'CE QUE LES GENS <em>REMARQUENT.</em>',googleReviewsLabel:'avis Google',openGoogleReviews:'Ouvrir sur Google Maps ↗',googleReviewer:'Avis Google',reviewAge:'il y a un mois',featuredReview:'« Un excellent club de boxe ! Le coach prend le temps d’expliquer chaque technique, corrige les erreurs avec patience et motive tout le groupe. L’entraînement est clair, structuré et très efficace. Franchement, c’était une excellente expérience — sérieuse, conviviale et facile à recommander. »',reviewSource:'Avis Google Maps mis en avant',locationKicker:'Venir à AA Sport',locationTitle:'TA PROCHAINE SÉANCE <em>COMMENCE ICI.</em>',locationText:'13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algérie.',addressLabel:'ADRESSE',hoursLabel:'HORAIRES',hoursValue:'Tous les jours · 08:00–22:30',openMaps:'Ouvrir dans Google Maps',callGym:'Appeler la salle',faqKicker:'Réponses rapides',faqTitle:'AVANT DE <em>VENIR.</em>',faqIntro:'Quelques réponses utiles pour décider plus vite sans chercher partout dans les messages.',faqQ1:'Y a-t-il des séances enfants ?',faqA1:'Oui. Jujutsu, lutte, boxe, taekwondo et aérobic pour enfants sont proposés plusieurs jours.',faqQ2:'Y a-t-il des séances réservées aux femmes ?',faqA2:'Oui. Des séances de boxe sont dédiées aux femmes et filles, avec aussi du self-défense pour filles.',faqQ3:'Puis-je m’entraîner tôt ou tard ?',faqA3:'Oui. Les créneaux VIP commencent à 07:30 et certaines séances vont jusqu’à 21:30 selon le jour.',faqQ4:'Comment demander les tarifs ?',faqA4:'Envoie un message directement à AA Sport sur Instagram pour les tarifs, l’inscription et les disponibilités.',contactKicker:'Prêt à t’entraîner ?',contactTitle:'ENTRE. <em>PASSE AU NIVEAU SUPÉRIEUR.</em>',contactText:'Pour les tarifs, l’inscription et plus d’informations, contacte AA Sport directement sur Instagram.',messageInstagram:'Écrire sur Instagram',checkTimetable:'Voir le planning',rights:'Tous droits réservés.',backTop:'Retour en haut',fullScheduleKicker:'Planning hebdomadaire complet',fullScheduleTitle:'TOUTES LES SÉANCES.',filterLabel:'Catégorie',filterAll:'Tous les programmes',filterKids:'Enfants',filterWomen:'Femmes / Filles',filterCombat:'Combat',filterFitness:'Fitness',filterVip:'VIP',noSessions:'Aucune séance ne correspond à ces filtres.',summaryAll:'Toutes les séances de la semaine',summaryFiltered:'{count} séances correspondantes'},
+ ar:{navSchedule:'البرنامج',navTeam:'الكوتش',navReviews:'التقييمات',navLocation:'المكان',joinNow:'سجّل معنا',heroLabel:'AA SPORT · عنابة',heroLine1:'تدرّب',heroLine2:'بلا حدود.',heroDesc:'بوكس، MMA، جيدو، مصارعة، دفاع عن النفس، حصص للصغار ولياقة — كامل في بلاصة وحدة في قلب عنابة.',viewSchedule:'شوف البرنامج',findUs:'لقانا',sessionsWeek:'أنواع حصص كل أسبوع',openWeek:'أيام تدريب',firstSession:'أول حصة',heroCaptionEyebrow:'تدريب متعدد الرياضات',heroCaption:'لكل مستوى.',proofOneTitle:'تدريب طول الأسبوع',proofOneText:'الحصص كاينة 7/7 من الصباح بكري حتى الليل.',proofTwoTitle:'لكل المستويات',proofTwoText:'صغار، كبار، نساء، منافسين ومبتدئين عندهم حصص مخصصة.',proofThreeTitle:'بلاصة وحدة، رياضات بزاف',proofThreeText:'رياضات قتالية، لياقة، تحضير بدني وحصص VIP كامل في نفس القاعة.',scheduleKicker:'برنامج الأسبوع',scheduleTitle:'لقى <em>الحصة تاعك.</em>',scheduleIntro:'ماكانش جدول طويل يعييك. اختار النهار وشوف شوية حصص، ومن بعد افتح البرنامج كامل غير كي تحتاجو.',openFullSchedule:'افتح البرنامج كامل',scheduleNote:'تقدر تصفي البرنامج حسب النهار، النوع، الصغار، النساء، القتال، اللياقة ولا VIP.',seeEverything:'شوف كامل الحصص',experienceKicker:'علاش AA Sport',experienceTitle:'تدريب <em>عندو هدف.</em>',experienceIntro:'معلومات مفيدة بلا حشو: واش القاعة توفر بصح وكيفاش البرنامج يناسب ناس مختلفين.',experienceCombatTitle:'رياضات قتالية',experienceCombatText:'بوكس، MMA، جيدو، مصارعة، جوجيتسو ودفاع عن النفس طول الأسبوع.',experienceKidsTitle:'حصص الصغار',experienceKidsText:'جوجيتسو، مصارعة، بوكس، تايكواندو وأيروبيك مخصص للصغار.',experienceWomenTitle:'نساء وبنات',experienceWomenText:'حصص بوكس ودفاع عن النفس مخصصة في بزاف أوقات خلال الأسبوع.',experienceVipTitle:'مرونة VIP',experienceVipText:'حصص من 07:30 الصباح وحتى أوقات متأخرة للناس لي يحتاجو مرونة.',tapToFilter:'اضغط باش تصفي البرنامج →',teamKicker:'كوتش البوكس',teamTitle:'تدرّب <em>بهدف.</em>',teamIntro:'تقنية، تنظيم، تصحيح وتطور — الهدف باللي كل حصة تعطيك فايدة بصح.',boxingCoach:'بوكس · منافسة',annabaBadge:'عنابة',abdouText:'تدريب بوكس مركز على شرح واضح، تصحيح بصبر، لياقة وتحضير للمنافسة.',seeBoxingTimes:'شوف أوقات القتال',coachPointOne:'التقنية قبل كلش',coachPointOneText:'شرح واضح وقواعد تقدر تعاود تخدم عليهم.',coachPointTwo:'حصص منظمة',coachPointTwoText:'كل حصة عندها هدف، ماشي تمارين عشوائية.',coachPointThree:'تحضير للمنافسة',coachPointThreeText:'خيارات تدريب للّي حاب يتطور بجدية للمنافسات.',trainingFocusKicker:'طرق تدريب أكثر',trainingFocusTitle:'اختار واش حاب تخدم.',reviewsKicker:'تقييمات Google',reviewsTitle:'واش الناس <em>لاحظو.</em>',googleReviewsLabel:'تقييمات Google',openGoogleReviews:'افتح في Google Maps ↗',googleReviewer:'مراجع على Google',reviewAge:'من شهر',featuredReview:'« نادي بوكس ممتاز! الكوتش ياخذ وقتو باش يشرح كل تقنية مليح، يصحح الأخطاء بصبر ويحفز المجموعة كامل. التدريب واضح، منظم وفعال بزاف. بصراحة كانت تجربة هايلة — جدية وفي نفس الوقت الجو مريح، ونقدر ننصح بيه بسهولة. »',reviewSource:'تقييم مميز من Google Maps',locationKicker:'تعال لـ AA Sport',locationTitle:'الحصة الجاية <em>تبدا من هنا.</em>',locationText:'13 شارع Colonel Amirouche، عنابة 23000، الجزائر.',addressLabel:'العنوان',hoursLabel:'أوقات الفتح',hoursValue:'كل يوم · 08:00–22:30',openMaps:'افتح في Google Maps',callGym:'عيط للقاعة',faqKicker:'أجوبة سريعة',faqTitle:'قبل ما <em>تجي.</em>',faqIntro:'شوية أجوبة مفيدة باش تعرف واش تحتاج بلا ما تقعد تقلب في الميساجات.',faqQ1:'كاين حصص للصغار؟',faqA1:'إيه. كاين جوجيتسو، مصارعة، بوكس، تايكواندو وأيروبيك للصغار في عدة أيام.',faqQ2:'كاين حصص مخصصة للنساء؟',faqA2:'إيه. كاين بوكس للنساء والبنات وزيد دفاع عن النفس للبنات.',faqQ3:'نقدر نتدرب بكري ولا بالليل؟',faqA3:'إيه. حصص VIP تبدا من 07:30 وكاين حصص حتى 21:30 حسب النهار.',faqQ4:'كيفاش نسقسي على الأسعار؟',faqA4:'ابعت لـ AA Sport مباشرة في Instagram على الأسعار، التسجيل والأماكن المتوفرة.',contactKicker:'واجد تتدرب؟',contactTitle:'ادخل. <em>طور مستواك.</em>',contactText:'للأسعار، التسجيل ومعلومات أكثر، ابعت مباشرة لـ AA Sport في Instagram.',messageInstagram:'ابعت في Instagram',checkTimetable:'شوف البرنامج',rights:'جميع الحقوق محفوظة.',backTop:'ارجع للفوق',fullScheduleKicker:'برنامج الأسبوع كامل',fullScheduleTitle:'كامل الحصص.',filterLabel:'النوع',filterAll:'كامل البرامج',filterKids:'الصغار',filterWomen:'نساء / بنات',filterCombat:'قتال',filterFitness:'لياقة',filterVip:'VIP',noSessions:'ماكان حتى حصة بهاذ الفلتر.',summaryAll:'نعرض كامل حصص الأسبوع',summaryFiltered:'نعرض {count} حصة مطابقة'}
 };
 
-let currentLang = localStorage.getItem('aa-lang') || 'en';
-if(!i18n[currentLang]) currentLang = 'en';
-let selectedDay = 'all';
-let selectedCategory = 'all';
+let currentLang=localStorage.getItem('aa-lang')||'en';
+let previewDay=getTodayScheduleDay();
+let selectedDay='all';
+let selectedCategory='all';
 
-function localizedName(name){
-  if(currentLang === 'en') return name;
-  return names[name]?.[currentLang] || name;
+function getTodayScheduleDay(){return ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'][new Date().getDay()]}
+function localizedName(name){if(currentLang==='en')return name;return names[name]?.[currentLang]||name}
+function localizedCategory(category){return categoryLabels[currentLang][category]||category}
+function formatTime(time){return time}
+function t(key){return i18n[currentLang][key]??key}
+
+function renderTicker(){
+  const items=sportTicker[currentLang];
+  const sequence=[...items,...items];
+  document.getElementById('sportTicker').innerHTML=sequence.map(x=>`<span>${x}</span><b>✦</b>`).join('');
 }
-
-function formatTime(time){
-  const [h,m] = time.split(':').map(Number);
-  if(currentLang === 'en'){
-    const suffix = h >= 12 ? 'PM' : 'AM';
-    const hour = h % 12 || 12;
-    return `${hour}:${String(m).padStart(2,'0')} ${suffix}`;
-  }
-  return time;
+function renderPreviewDays(){
+  document.getElementById('previewDays').innerHTML=DAYS.map(day=>`<button class="preview-day ${day===previewDay?'active':''}" data-preview-day="${day}">${dayLabels[currentLang][day]}</button>`).join('');
+  document.querySelectorAll('[data-preview-day]').forEach(btn=>btn.addEventListener('click',()=>{previewDay=btn.dataset.previewDay;renderPreviewDays();renderPreviewSessions()}));
 }
-
-function renderQuickPicks(){
-  const wrap = document.getElementById('quickPicks');
-  if(!wrap) return;
-  wrap.innerHTML = categoryQuick[currentLang].map(([value,label]) => `<button class="quick-pick ${selectedCategory===value?'active':''}" data-category="${value}">${label}</button>`).join('');
-  wrap.querySelectorAll('.quick-pick').forEach(btn=>btn.addEventListener('click',()=>{
-    selectedCategory = btn.dataset.category;
-    const select = document.getElementById('categoryFilter');
-    if(select) select.value = selectedCategory;
-    renderQuickPicks();
-    renderSchedule();
-  }));
+function renderPreviewSessions(){
+  const sessions=schedule.filter(s=>s.day===previewDay).slice(0,3);
+  document.getElementById('schedulePreview').innerHTML=sessions.map(s=>`<article class="preview-session"><div class="preview-session-top"><span class="preview-session-time">${formatTime(s.time)}</span><span class="preview-session-tag">${localizedCategory(s.category)}</span></div><div class="preview-session-name">${localizedName(s.name)}</div></article>`).join('');
 }
-
 function renderDayFilters(){
-  const wrap = document.getElementById('dayFilters');
-  if(!wrap) return;
-  const allDays = ['all',...DAYS];
-  wrap.innerHTML = allDays.map(day=>`<button class="day-filter ${selectedDay===day?'active':''}" data-day="${day}">${dayLabels[currentLang][day]}</button>`).join('');
-  wrap.querySelectorAll('.day-filter').forEach(btn=>btn.addEventListener('click',()=>{
-    selectedDay = btn.dataset.day;
-    renderDayFilters();
-    renderSchedule();
-  }));
+  const container=document.getElementById('dayFilters');
+  container.innerHTML=[['all',dayLabels[currentLang].all],...DAYS.map(d=>[d,dayLabels[currentLang][d]])].map(([value,label])=>`<button class="day-filter ${selectedDay===value?'active':''}" data-day="${value}">${label}</button>`).join('');
+  container.querySelectorAll('.day-filter').forEach(btn=>btn.addEventListener('click',()=>{selectedDay=btn.dataset.day;renderDayFilters();renderSchedule()}));
 }
-
 function renderSchedule(){
-  const grid = document.getElementById('scheduleGrid');
-  if(!grid) return;
-  const filtered = schedule.filter(s=>(selectedDay==='all'||s.day===selectedDay)&&(selectedCategory==='all'||s.category===selectedCategory));
-  const summary = document.getElementById('scheduleSummary');
-  if(summary){
-    summary.textContent = (selectedDay==='all'&&selectedCategory==='all')
-      ? i18n[currentLang].summaryAll
-      : i18n[currentLang].summaryFiltered.replace('{count}',filtered.length);
-  }
-  if(!filtered.length){
-    grid.innerHTML = `<div class="empty-state">${i18n[currentLang].noSessions}</div>`;
-    return;
-  }
-  grid.innerHTML = filtered.map((s,index)=>`
-    <article class="session-card" style="animation-delay:${Math.min(index*20,180)}ms">
-      <div class="session-top">
-        <div><div class="session-time">${formatTime(s.time)}</div><div class="session-day">${dayLabels[currentLang][s.day]}</div></div>
-        <span class="session-tag ${s.category==='vip'?'vip':''}">${categoryLabels[currentLang][s.category]}</span>
-      </div>
-      <div class="session-name">${localizedName(s.name)}</div>
-    </article>`).join('');
+  let filtered=schedule.filter(s=>(selectedDay==='all'||s.day===selectedDay)&&(selectedCategory==='all'||s.category===selectedCategory));
+  const grid=document.getElementById('scheduleGrid');
+  const summary=document.getElementById('scheduleSummary');
+  summary.textContent=selectedDay==='all'&&selectedCategory==='all'?t('summaryAll'):t('summaryFiltered').replace('{count}',filtered.length);
+  grid.innerHTML=filtered.length?filtered.map(s=>`<article class="session-card"><div class="session-top"><span class="session-time">${formatTime(s.time)}</span><span class="session-day">${dayLabels[currentLang][s.day]}</span></div><span class="session-tag ${s.category==='vip'?'vip':''}">${localizedCategory(s.category)}</span><div class="session-name">${localizedName(s.name)}</div></article>`).join(''):`<div class="empty-state">${t('noSessions')}</div>`;
 }
-
-function translateTicker(){
-  const spans = document.querySelectorAll('.ticker-track span');
-  const labels = sportTicker[currentLang];
-  spans.forEach((span,index)=>{ span.textContent = labels[index % labels.length]; });
+function renderTeamChips(){
+  const wrap=document.getElementById('teamDisciplineChips');
+  wrap.innerHTML=teamDisciplineLabels[currentLang].map(([category,label])=>`<button class="focus-chip" data-chip-category="${category}">${label}</button>`).join('');
+  wrap.querySelectorAll('[data-chip-category]').forEach(btn=>btn.addEventListener('click',()=>openSchedule(btn.dataset.chipCategory)));
 }
-
-function translateTeamDisciplineButtons(){
-  const buttons = document.querySelectorAll('.discipline-cloud button');
-  const labels = teamDisciplineLabels[currentLang];
-  buttons.forEach((btn,index)=>{ btn.textContent = labels[index] || btn.textContent; });
-  const role = document.querySelector('.coach-line span');
-  if(role) role.textContent = currentLang==='ar' ? 'مصارعة' : 'LUTTE';
+function renderReviewMarquee(){
+  const items=reviewHighlights[currentLang];
+  const doubled=[...items,...items];
+  document.getElementById('reviewMarquee').innerHTML=doubled.map(([title,text],i)=>`<article class="review-highlight"><div class="mini-avatar">${i%2?'★':'G'}</div><div><strong>${title}</strong><p>${text}</p></div></article>`).join('');
 }
-
 function applyLanguage(lang){
-  currentLang = lang;
-  localStorage.setItem('aa-lang',lang);
-  document.documentElement.lang = lang === 'ar' ? 'ar' : lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.documentElement.dataset.lang = lang;
-
-  document.querySelectorAll('[data-i18n]').forEach(el=>{
-    const key = el.dataset.i18n;
-    if(i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
-  });
+  currentLang=lang;localStorage.setItem('aa-lang',lang);document.documentElement.lang=lang==='ar'?'ar':lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.documentElement.dataset.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(i18n[lang][key]!==undefined)el.innerHTML=i18n[lang][key]});
   document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang));
-  translateTicker();
-  translateTeamDisciplineButtons();
-  renderQuickPicks();
-  renderDayFilters();
-  renderSchedule();
+  renderTicker();renderPreviewDays();renderPreviewSessions();renderDayFilters();renderSchedule();renderTeamChips();renderReviewMarquee();
 }
 
-function setupNavigation(){
-  const menu = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  const nav = document.querySelector('.navigation');
-  if(menu && links){
-    menu.addEventListener('click',()=>{
-      const open = links.classList.toggle('open');
-      menu.classList.toggle('open',open);
-      menu.setAttribute('aria-expanded',String(open));
-    });
-    links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-      links.classList.remove('open');menu.classList.remove('open');menu.setAttribute('aria-expanded','false');
-    }));
-  }
-  window.addEventListener('scroll',()=>nav?.classList.toggle('scrolled',window.scrollY>30),{passive:true});
+const modal=document.getElementById('scheduleModal');
+function openSchedule(category){
+  if(category&&category!=='all')selectedCategory=category;
+  document.getElementById('categoryFilter').value=selectedCategory;
+  renderDayFilters();renderSchedule();
+  if(typeof modal.showModal==='function')modal.showModal();else modal.setAttribute('open','');
+  document.body.classList.add('modal-open');
 }
-
-function setupReveal(){
-  const elements = document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){elements.forEach(el=>el.classList.add('visible'));return;}
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
-    });
-  },{threshold:.1,rootMargin:'0px 0px -35px'});
-  elements.forEach(el=>observer.observe(el));
-}
-
-function setupScrollProgress(){
-  const bar = document.getElementById('scrollProgress');
-  if(!bar) return;
-  const update=()=>{
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = `${max>0 ? Math.min(100,(window.scrollY/max)*100) : 0}%`;
-  };
-  window.addEventListener('scroll',update,{passive:true});
-  update();
-}
-
-function setupCursorGlow(){
-  const glow = document.getElementById('cursorGlow');
-  if(!glow || !matchMedia('(pointer:fine)').matches) return;
-  window.addEventListener('pointermove',e=>{
-    glow.style.left = `${e.clientX}px`;
-    glow.style.top = `${e.clientY}px`;
-  },{passive:true});
-}
-
-function setupMagneticButtons(){
-  if(!matchMedia('(pointer:fine)').matches || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.magnetic').forEach(el=>{
-    el.addEventListener('pointermove',e=>{
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX-r.left-r.width/2)*.12;
-      const y = (e.clientY-r.top-r.height/2)*.12;
-      el.style.transform = `translate(${x}px,${y}px)`;
-    });
-    el.addEventListener('pointerleave',()=>el.style.transform='');
-  });
-}
-
-function jumpToCategory(category){
-  selectedCategory = category;
-  selectedDay = 'all';
-  const select = document.getElementById('categoryFilter');
-  if(select) select.value = category;
-  renderQuickPicks();
-  renderDayFilters();
-  renderSchedule();
-  document.getElementById('schedule')?.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function setupInteractiveJumps(){
-  document.querySelectorAll('[data-scroll]').forEach(el=>el.addEventListener('click',()=>document.querySelector(el.dataset.scroll)?.scrollIntoView({behavior:'smooth'})));
-  document.querySelectorAll('[data-category-jump]').forEach(el=>el.addEventListener('click',()=>jumpToCategory(el.dataset.categoryJump)));
-  const select = document.getElementById('categoryFilter');
-  select?.addEventListener('change',e=>{
-    selectedCategory = e.target.value;
-    renderQuickPicks();
-    renderSchedule();
-  });
-}
+function closeSchedule(){modal.close?.();modal.removeAttribute('open');document.body.classList.remove('modal-open')}
+document.querySelectorAll('[data-open-schedule]').forEach(btn=>btn.addEventListener('click',()=>openSchedule(btn.dataset.category||'all')));
+document.querySelectorAll('.experience-card[data-category]').forEach(btn=>btn.addEventListener('click',()=>openSchedule(btn.dataset.category)));
+document.getElementById('closeSchedule').addEventListener('click',closeSchedule);
+modal.addEventListener('click',e=>{if(e.target===modal)closeSchedule()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.open)closeSchedule()});
+document.getElementById('categoryFilter').addEventListener('change',e=>{selectedCategory=e.target.value;renderSchedule()});
 
 document.querySelectorAll('.lang-btn').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));
-document.getElementById('year').textContent = new Date().getFullYear();
 
-setupNavigation();
-setupReveal();
-setupScrollProgress();
-setupCursorGlow();
-setupMagneticButtons();
-setupInteractiveJumps();
+const menu=document.getElementById('menuToggle'),links=document.getElementById('navLinks');
+menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+
+document.querySelectorAll('.faq-item>button').forEach(btn=>btn.addEventListener('click',()=>{const item=btn.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(other=>{if(other!==item)other.classList.remove('open')});item.classList.toggle('open')}));
+
+const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -25px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+const progress=document.getElementById('scrollProgress');
+function updateProgress(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=`${max>0?(scrollY/max)*100:0}%`}
+addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+
+const cursorGlow=document.getElementById('cursorGlow');
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  addEventListener('mousemove',e=>{cursorGlow.style.left=`${e.clientX}px`;cursorGlow.style.top=`${e.clientY}px`;cursorGlow.style.opacity='1'},{passive:true});
+  document.querySelectorAll('.magnetic').forEach(el=>{el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*.11,y=(e.clientY-r.top-r.height/2)*.11;el.style.transform=`translate(${x}px,${y}px)`});el.addEventListener('mouseleave',()=>{el.style.transform=''})});
+  const hero=document.getElementById('heroVisual');hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();const rx=(e.clientY-r.top-r.height/2)/r.height*-2.2,ry=(e.clientX-r.left-r.width/2)/r.width*2.2;hero.style.transform=`perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`});hero.addEventListener('mouseleave',()=>{hero.style.transform=''})
+}
+
+document.getElementById('year').textContent=new Date().getFullYear();
 applyLanguage(currentLang);
