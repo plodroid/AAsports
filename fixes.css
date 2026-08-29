@@ -1,0 +1,111 @@
+/* AA Sport layout/image fixes */
+body{
+  background:
+    radial-gradient(circle at 82% 12%,rgba(245,200,66,.10),transparent 28%),
+    radial-gradient(circle at 10% 72%,rgba(191,132,18,.08),transparent 30%),
+    linear-gradient(180deg,#0b0b0b 0%,#0d0d0d 45%,#090909 100%);
+}
+
+.brand-logo{
+  width:44px;
+  height:44px;
+  flex:0 0 44px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:50%;
+  border:1px solid rgba(245,200,66,.34);
+  box-shadow:0 8px 26px rgba(0,0,0,.28),0 0 26px rgba(245,200,66,.10);
+}
+
+.footer .brand-logo{width:38px;height:38px;flex-basis:38px}
+
+.hero-visual{isolation:isolate}
+.hero-photo-real{
+  min-height:610px;
+  aspect-ratio:4/5;
+  background-image:
+    linear-gradient(to top,rgba(0,0,0,.50),rgba(0,0,0,.03) 48%,rgba(0,0,0,.10)),
+    url('assets/hero.png');
+  background-size:cover;
+  background-position:center 22%;
+  background-repeat:no-repeat;
+}
+.hero-photo-real::before{
+  background:linear-gradient(to top,rgba(0,0,0,.48),transparent 48%),radial-gradient(circle at 75% 18%,rgba(245,200,66,.10),transparent 34%);
+}
+
+.hero-stamp-wide{
+  width:auto;
+  min-width:132px;
+  height:auto;
+  min-height:88px;
+  padding:14px 18px;
+  border-radius:18px;
+  right:-14px;
+  top:42px;
+  transform:rotate(3deg);
+  text-align:center;
+}
+.hero-stamp-wide span{font-size:.58rem}
+.hero-stamp-wide b{font-size:2rem;white-space:nowrap}
+
+.coach-roster{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.coach-feature,.coach-more{
+  min-height:210px;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+  padding:24px;
+  display:flex;
+  align-items:flex-end;
+  gap:18px;
+}
+.coach-avatar{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:linear-gradient(145deg,#ffe984,var(--gold-2));
+  color:#111;
+  font-family:var(--display);
+  font-size:1.45rem;
+  box-shadow:0 12px 32px rgba(245,200,66,.14);
+}
+.coach-feature>div:last-child,.coach-more>div{min-width:0}
+.coach-feature span{font-size:.58rem;letter-spacing:.15em;color:var(--gold);font-weight:900}
+.coach-feature h3,.coach-more h3{font-family:var(--display);font-size:2rem;line-height:1.02;font-weight:400;margin:.25rem 0 .45rem}
+.coach-feature p,.coach-more p{font-size:.78rem;color:var(--text-soft);line-height:1.55}
+.coach-more>span{
+  width:58px;
+  height:58px;
+  flex:0 0 58px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:1px solid var(--line-strong);
+  color:var(--gold);
+  font-size:1.8rem;
+}
+
+@media(max-width:980px){
+  .hero-photo-real{min-height:560px;aspect-ratio:16/11;background-position:center 20%}
+  .coach-roster{grid-template-columns:1fr 1fr}
+  .coach-more{grid-column:1/-1}
+}
+@media(max-width:720px){
+  .brand-logo{width:40px;height:40px;flex-basis:40px}
+  .hero-photo-real{min-height:440px;aspect-ratio:4/5;background-position:center 20%}
+  .hero-stamp-wide{right:8px;top:18px;min-width:112px;min-height:72px;padding:10px 14px}
+  .hero-stamp-wide b{font-size:1.55rem}
+  .coach-roster{grid-template-columns:1fr}
+  .coach-more{grid-column:auto}
+}
+@media(max-width:480px){
+  .hero-photo-real{min-height:390px;background-position:center 18%}
+}
