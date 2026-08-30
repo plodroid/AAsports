@@ -1,4 +1,3 @@
-/* AA Sport schedule UX refinements */
 (function(){
   const copy={
     en:{intro:'Pick a day to see every session running that day. Open the full timetable to see the whole week in one place.',note:'Every session for the selected day is shown here. Open the full timetable for the complete week.'},
@@ -32,7 +31,6 @@
     originalOpenSchedule(requested);
   };
 
-  /* Use the new hero image the user uploaded. */
   const heroImage=document.querySelector('.hero-photo img');
   if(heroImage){
     heroImage.src='assets/image.psd.jpg';
@@ -41,7 +39,6 @@
   const ogImage=document.querySelector('meta[property="og:image"]');
   if(ogImage)ogImage.setAttribute('content','assets/image.psd.jpg');
 
-  /* Use the newer Coach Abdou JPG and make the coach feature feel like a real spotlight. */
   const coachImage=document.querySelector('.coach-photo-card img');
   if(coachImage){
     coachImage.src='assets/abdulAtalha.jpg';
