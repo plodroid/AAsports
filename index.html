@@ -27,14 +27,12 @@
         <img src="assets/Icon.png" class="brand-logo" alt="AA Sport logo">
         <span class="brand-copy"><strong>AA SPORT</strong><small>ANNABA · DZ</small></span>
       </a>
-
       <div class="nav-links" id="navLinks">
         <a href="#schedule" data-i18n="navSchedule">Schedule</a>
         <a href="#team" data-i18n="navTeam">Coach</a>
         <a href="#reviews" data-i18n="navReviews">Reviews</a>
         <a href="#location" data-i18n="navLocation">Location</a>
       </div>
-
       <div class="nav-actions">
         <div class="lang-switcher" aria-label="Language selector">
           <button class="lang-btn active" data-lang="en">EN</button>
@@ -77,9 +75,7 @@
       </div>
     </section>
 
-    <section class="sport-ticker" aria-label="AA Sport disciplines">
-      <div class="ticker-track" id="sportTicker"></div>
-    </section>
+    <section class="sport-ticker" aria-label="AA Sport disciplines"><div class="ticker-track" id="sportTicker"></div></section>
 
     <section class="proof-strip shell reveal" aria-label="AA Sport quick facts">
       <article><span>01</span><div><strong data-i18n="proofOneTitle">Training all week</strong><p data-i18n="proofOneText">Sessions run across all 7 days, from early morning to late evening.</p></div></article>
@@ -91,9 +87,8 @@
       <div class="shell">
         <div class="section-head reveal">
           <div><span class="kicker" data-i18n="scheduleKicker">Weekly timetable</span><h2 data-i18n="scheduleTitle">FIND YOUR <em>SESSION.</em></h2></div>
-          <p data-i18n="scheduleIntro">No giant timetable wall. Pick a day, preview a few sessions, then open the full schedule only when you need it.</p>
+          <p data-i18n="scheduleIntro">Pick a day to see every session running that day. Open the full timetable to see the whole week in one place.</p>
         </div>
-
         <div class="schedule-panel reveal">
           <div class="schedule-panel-top">
             <div class="preview-days" id="previewDays"></div>
@@ -101,7 +96,7 @@
           </div>
           <div class="schedule-preview" id="schedulePreview"></div>
           <div class="schedule-panel-footer">
-            <div class="schedule-note"><span>✦</span><p data-i18n="scheduleNote">Filter the full timetable by day, category, kids, women, combat, fitness or VIP.</p></div>
+            <div class="schedule-note"><span>✦</span><p data-i18n="scheduleNote">Every session for the selected day is shown here. Open the full timetable for the complete week.</p></div>
             <button class="text-button" data-open-schedule><span data-i18n="seeEverything">See every session</span> →</button>
           </div>
         </div>
@@ -129,9 +124,8 @@
           <div><span class="kicker" data-i18n="teamKicker">Boxing coach</span><h2 data-i18n="teamTitle">TRAIN WITH <em>PURPOSE.</em></h2></div>
           <p data-i18n="teamIntro">Technique, structure, corrections and progression — the coaching focus is on making every session count.</p>
         </div>
-
         <div class="coach-spotlight reveal">
-          <div class="coach-monogram"><span>AA</span><small>BOXING</small></div>
+          <div class="coach-photo-card"><img src="abdulAtalha.png" alt="Coach Abdou Attala"><div class="coach-photo-label"><span>BOXING</span><small>AA SPORT · ANNABA</small></div></div>
           <div class="coach-main-copy">
             <div class="coach-badges"><span data-i18n="boxingCoach">BOXING · COMPETITION</span><span data-i18n="annabaBadge">ANNABA</span></div>
             <h3>Coach Abdou Attala</h3>
@@ -147,7 +141,6 @@
             <button data-category="combat" data-open-schedule><span>03</span><strong data-i18n="coachPointThree">Competition ready</strong><small data-i18n="coachPointThreeText">Training options for serious competitive development.</small></button>
           </div>
         </div>
-
         <div class="training-focus reveal">
           <div><span class="kicker" data-i18n="trainingFocusKicker">More ways to train</span><h3 data-i18n="trainingFocusTitle">Pick what you want to work on.</h3></div>
           <div class="focus-chips" id="teamDisciplineChips"></div>
@@ -157,51 +150,20 @@
 
     <section class="reviews-section" id="reviews">
       <div class="shell reviews-head reveal">
-        <div>
-          <span class="kicker" data-i18n="reviewsKicker">Google reviews</span>
-          <h2 data-i18n="reviewsTitle">WHAT PEOPLE <em>NOTICE.</em></h2>
-        </div>
-        <a class="rating-card" href="https://www.google.com/maps/search/?api=1&query=13+Av.+Colonel+Amirouche,+Annaba,+Algeria" target="_blank" rel="noopener">
-          <div class="rating-stars" aria-label="5 out of 5 stars">★★★★★</div>
-          <strong>5.0</strong>
-          <span><b id="googleReviewCount">5</b> <span data-i18n="googleReviewsLabel">Google reviews</span></span>
-          <small data-i18n="openGoogleReviews">Open on Google Maps ↗</small>
-        </a>
+        <div><span class="kicker" data-i18n="reviewsKicker">Google reviews</span><h2 data-i18n="reviewsTitle">WHAT PEOPLE <em>NOTICE.</em></h2></div>
+        <a class="rating-card" href="https://www.google.com/maps/search/?api=1&query=13+Av.+Colonel+Amirouche,+Annaba,+Algeria" target="_blank" rel="noopener"><div class="rating-stars" aria-label="5 out of 5 stars">★★★★★</div><strong>5.0</strong><span><b id="googleReviewCount">5</b> <span data-i18n="googleReviewsLabel">Google reviews</span></span><small data-i18n="openGoogleReviews">Open on Google Maps ↗</small></a>
       </div>
-
-      <div class="review-marquee-wrap reveal" aria-label="Review highlights">
-        <div class="review-marquee" id="reviewMarquee"></div>
-      </div>
-
+      <div class="review-marquee-wrap reveal" aria-label="Review highlights"><div class="review-marquee" id="reviewMarquee"></div></div>
       <div class="shell featured-review reveal">
         <div class="review-avatar" aria-hidden="true">G</div>
-        <div class="review-copy">
-          <div class="review-meta"><div><span class="stars">★★★★★</span><b data-i18n="googleReviewer">Google reviewer</b></div><small data-i18n="reviewAge">a month ago</small></div>
-          <blockquote data-i18n="featuredReview">“An excellent boxing club! The coach takes the time to thoroughly explain each technique, corrects mistakes patiently, and motivates the entire group. The training is clear, structured, and very effective. Honestly, it was a fantastic experience — serious, friendly, and easy to recommend.”</blockquote>
-          <div class="review-source"><span class="google-g">G</span><span data-i18n="reviewSource">Featured Google Maps review</span></div>
-        </div>
+        <div class="review-copy"><div class="review-meta"><div><span class="stars">★★★★★</span><b data-i18n="googleReviewer">Google reviewer</b></div><small data-i18n="reviewAge">a month ago</small></div><blockquote data-i18n="featuredReview">“An excellent boxing club! The coach takes the time to thoroughly explain each technique, corrects mistakes patiently, and motivates the entire group. The training is clear, structured, and very effective. Honestly, it was a fantastic experience — serious, friendly, and easy to recommend.”</blockquote><div class="review-source"><span class="google-g">G</span><span data-i18n="reviewSource">Featured Google Maps review</span></div></div>
       </div>
     </section>
 
     <section class="section location-section" id="location">
       <div class="shell location-grid">
-        <div class="location-copy reveal">
-          <span class="kicker" data-i18n="locationKicker">Visit AA Sport</span>
-          <h2 data-i18n="locationTitle">YOUR NEXT SESSION <em>STARTS HERE.</em></h2>
-          <p data-i18n="locationText">13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algeria.</p>
-          <div class="location-facts">
-            <div><small data-i18n="addressLabel">ADDRESS</small><strong>13 Av. Colonel Amirouche<br>Annaba, Algeria</strong></div>
-            <div><small data-i18n="hoursLabel">OPENING HOURS</small><strong data-i18n="hoursValue">Daily · 08:00–22:30</strong></div>
-          </div>
-          <div class="location-actions">
-            <a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&query=13+Av.+Colonel+Amirouche,+Annaba,+Algeria" target="_blank" rel="noopener"><span data-i18n="openMaps">Open in Google Maps</span><span>↗</span></a>
-            <a class="btn btn-ghost magnetic" href="tel:+213558577083"><span data-i18n="callGym">Call the gym</span><span>☎</span></a>
-          </div>
-        </div>
-        <div class="map-wrap reveal">
-          <iframe title="AA Sport DZ location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=13%20Av.%20Colonel%20Amirouche%2C%20Annaba%2C%20Algeria&output=embed"></iframe>
-          <div class="map-badge"><img src="assets/Icon.png" alt=""><div><b>AA SPORT DZ</b><small>13 AV. COLONEL AMIROUCHE</small></div></div>
-        </div>
+        <div class="location-copy reveal"><span class="kicker" data-i18n="locationKicker">Visit AA Sport</span><h2 data-i18n="locationTitle">YOUR NEXT SESSION <em>STARTS HERE.</em></h2><p data-i18n="locationText">13 Av. Colonel Amirouche, Annaba 23000, Hippone, Annaba, Algeria.</p><div class="location-facts"><div><small data-i18n="addressLabel">ADDRESS</small><strong>13 Av. Colonel Amirouche<br>Annaba, Algeria</strong></div><div><small data-i18n="hoursLabel">OPENING HOURS</small><strong data-i18n="hoursValue">Daily · 08:00–22:30</strong></div></div><div class="location-actions"><a class="btn btn-primary magnetic" href="https://www.google.com/maps/search/?api=1&query=13+Av.+Colonel+Amirouche,+Annaba,+Algeria" target="_blank" rel="noopener"><span data-i18n="openMaps">Open in Google Maps</span><span>↗</span></a><a class="btn btn-ghost magnetic" href="tel:+213558577083"><span data-i18n="callGym">Call the gym</span><span>☎</span></a></div></div>
+        <div class="map-wrap reveal"><iframe title="AA Sport DZ location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=13%20Av.%20Colonel%20Amirouche%2C%20Annaba%2C%20Algeria&output=embed"></iframe><div class="map-badge"><img src="assets/Icon.png" alt=""><div><b>AA SPORT DZ</b><small>13 AV. COLONEL AMIROUCHE</small></div></div></div>
       </div>
     </section>
 
@@ -217,40 +179,20 @@
       </div>
     </section>
 
-    <section class="section contact-section shell" id="contact">
-      <div class="contact-panel reveal">
-        <div class="contact-copy"><span class="kicker" data-i18n="contactKicker">Ready to train?</span><h2 data-i18n="contactTitle">STEP IN. <em>LEVEL UP.</em></h2><p data-i18n="contactText">For prices, registration and more information, contact AA Sport directly on Instagram.</p></div>
-        <div class="contact-actions">
-          <a class="btn btn-dark magnetic" href="https://www.instagram.com/aa_sport_dz/" target="_blank" rel="noopener"><span data-i18n="messageInstagram">Message on Instagram</span><span>↗</span></a>
-          <button class="btn btn-outline-dark magnetic" data-open-schedule><span data-i18n="checkTimetable">Check timetable</span></button>
-        </div>
-      </div>
-    </section>
+    <section class="section contact-section shell" id="contact"><div class="contact-panel reveal"><div class="contact-copy"><span class="kicker" data-i18n="contactKicker">Ready to train?</span><h2 data-i18n="contactTitle">STEP IN. <em>LEVEL UP.</em></h2><p data-i18n="contactText">For prices, registration and more information, contact AA Sport directly on Instagram.</p></div><div class="contact-actions"><a class="btn btn-dark magnetic" href="https://www.instagram.com/aa_sport_dz/" target="_blank" rel="noopener"><span data-i18n="messageInstagram">Message on Instagram</span><span>↗</span></a><button class="btn btn-outline-dark magnetic" data-open-schedule><span data-i18n="checkTimetable">Check timetable</span></button></div></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="shell footer-inner">
-      <a class="brand footer-brand" href="#top"><img src="assets/Icon.png" class="brand-logo" alt="AA Sport logo"><span class="brand-copy"><strong>AA SPORT</strong><small>ANNABA · DZ</small></span></a>
-      <p>© <span id="year"></span> AA Sport DZ. <span data-i18n="rights">All rights reserved.</span></p>
-      <a href="#top" class="back-top"><span data-i18n="backTop">Back to top</span> ↑</a>
-    </div>
-  </footer>
+  <footer class="footer"><div class="shell footer-inner"><a class="brand footer-brand" href="#top"><img src="assets/Icon.png" class="brand-logo" alt="AA Sport logo"><span class="brand-copy"><strong>AA SPORT</strong><small>ANNABA · DZ</small></span></a><p>© <span id="year"></span> AA Sport DZ. <span data-i18n="rights">All rights reserved.</span></p><a href="#top" class="back-top"><span data-i18n="backTop">Back to top</span> ↑</a></div></footer>
 
   <dialog class="schedule-modal" id="scheduleModal" aria-labelledby="scheduleModalTitle">
     <div class="modal-shell">
-      <div class="modal-head">
-        <div><span class="kicker" data-i18n="fullScheduleKicker">Full weekly timetable</span><h2 id="scheduleModalTitle" data-i18n="fullScheduleTitle">ALL SESSIONS.</h2></div>
-        <button class="modal-close" id="closeSchedule" aria-label="Close timetable">×</button>
-      </div>
-      <div class="modal-toolbar">
-        <div class="day-filters" id="dayFilters"></div>
-        <label class="category-select"><span data-i18n="filterLabel">Category</span><select id="categoryFilter"><option value="all" data-i18n="filterAll">All programs</option><option value="kids" data-i18n="filterKids">Kids</option><option value="women" data-i18n="filterWomen">Women / Girls</option><option value="combat" data-i18n="filterCombat">Combat</option><option value="fitness" data-i18n="filterFitness">Fitness</option><option value="vip" data-i18n="filterVip">VIP</option></select></label>
-      </div>
-      <div class="schedule-summary" id="scheduleSummary"></div>
-      <div class="schedule-grid" id="scheduleGrid"></div>
+      <div class="modal-head"><div><span class="kicker" data-i18n="fullScheduleKicker">Full weekly timetable</span><h2 id="scheduleModalTitle" data-i18n="fullScheduleTitle">ALL SESSIONS.</h2></div><button class="modal-close" id="closeSchedule" aria-label="Close timetable">×</button></div>
+      <div class="modal-toolbar"><div class="day-filters" id="dayFilters"></div><label class="category-select"><span data-i18n="filterLabel">Category</span><select id="categoryFilter"><option value="all" data-i18n="filterAll">All programs</option><option value="kids" data-i18n="filterKids">Kids</option><option value="women" data-i18n="filterWomen">Women / Girls</option><option value="combat" data-i18n="filterCombat">Combat</option><option value="fitness" data-i18n="filterFitness">Fitness</option><option value="vip" data-i18n="filterVip">VIP</option></select></label></div>
+      <div class="schedule-summary" id="scheduleSummary"></div><div class="schedule-grid" id="scheduleGrid"></div>
     </div>
   </dialog>
 
   <script src="script.js"></script>
+  <script src="schedule-fix.js"></script>
 </body>
 </html>
