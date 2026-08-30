@@ -1,5 +1,12 @@
 /* AA Sport schedule UX refinements */
 (function(){
+  if(!document.querySelector('link[href="extra-polish.css"]')){
+    const link=document.createElement('link');
+    link.rel='stylesheet';
+    link.href='extra-polish.css';
+    document.head.appendChild(link);
+  }
+
   const copy={
     en:{intro:'Pick a day to see every session running that day. Open the full timetable to see the whole week in one place.',note:'Every session for the selected day is shown here. Open the full timetable for the complete week.'},
     fr:{intro:'Choisis un jour pour voir toutes les séances prévues ce jour-là. Ouvre le planning complet pour voir toute la semaine au même endroit.',note:'Toutes les séances du jour sélectionné sont affichées ici. Ouvre le planning complet pour toute la semaine.'},
