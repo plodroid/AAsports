@@ -32,6 +32,15 @@
     originalOpenSchedule(requested);
   };
 
+  /* Use the new hero image the user uploaded. */
+  const heroImage=document.querySelector('.hero-photo img');
+  if(heroImage){
+    heroImage.src='assets/image.psd.jpg';
+    heroImage.alt='AA Sport gym';
+  }
+  const ogImage=document.querySelector('meta[property="og:image"]');
+  if(ogImage)ogImage.setAttribute('content','assets/image.psd.jpg');
+
   /* Use the newer Coach Abdou JPG and make the coach feature feel like a real spotlight. */
   const coachImage=document.querySelector('.coach-photo-card img');
   if(coachImage){
