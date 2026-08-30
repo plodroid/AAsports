@@ -1,6 +1,5 @@
 @import url("base.css");
 
-/* Timetable modal polish */
 .schedule-modal{
   position:fixed;
   inset:0;
@@ -133,7 +132,6 @@
 @keyframes modalControlsIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @keyframes sessionCardIn{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
 
-/* Make schedule preview interactions feel smoother too */
 .preview-day{transition:transform .24s ease,box-shadow .24s ease,background .24s ease,color .24s ease,border-color .24s ease}
 .preview-day:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.055)}
 .preview-day:active{transform:scale(.96)}
